@@ -5,37 +5,38 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="https://cdn.cocreate.app/favicon.ico" type="image/ico" sizes="16x16">
     <title>Modal | CoCreate</title>
   
     <!-- CoCreate UI -->
-    <!--<link rel="stylesheet" href="https://cdn.cocreate.app/CoCreateUI.min.css" type="text/css" />-->
-    <link rel="stylesheet" href="https://server.cocreate.app/CoCreateCSS/dist/CoCreateUI.min.css" type="text/css" />
+    <!--<link rel="stylesheet" href="https://cdn.cocreate.app/CoCreate.min.css" type="text/css" />-->
+    <link rel="stylesheet" href="https://server.cocreate.app/CoCreateCSS/dist/CoCreate.min.css" type="text/css" />
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" crossorigin="anonymous" />    
    
     <!-- CoCreate Modal CSS -->
-    <link rel="stylesheet" href="https://server.cocreate.app/CoCreate-components/CoCreate-modal/CoCreate-modal.css" type="text/css" />
+    <link rel="stylesheet" href="https://server.cocreate.app/CoCreate-components/CoCreate-modal/src/CoCreate-modal.css" type="text/css" />
 
   </head>
 
-  <body translate="no">
-    <div class="cocreate-container margin-0" id="customVPhere"  data-ghost-class="modal-ghost">
-      <div class>
-       
+  <body>
+   
+      <div class="display-flex">
         <button>
-          <a target="modal" href="https://server.cocreate.app/module_datatable.html"
+          <a target="modal" href="https://server.cocreate.app/CoCreate-adminUI/module_datatable.html"
             data-modal_ajax="false"
-            data-modal_width="320px"
+            data-modal_width="520px"
             data-modal_height="100%"
             data-modal_color="#229954"
             data-modal_header="false"
             data-modal_x="0px"
             data-modal_y="0px"
-            data-open_in="page">Page-1
+            data-open_in="page">
+            Page-1
           </a>
         </button>
-        
+
         <button>
           <a target="modal" href="test2.html"
             data-modal_ajax="false"
@@ -83,16 +84,15 @@
             data-modal_x="0px"
             data-modal_y="0px">PageID-12345</a>
         </button>
+      </div>
 
-  		</div>
-  		
   		<div class>
   		  <h2>Test 1</h2>
   		  <h5 id="page-parent"></h5>
   		  <h6 id="page-page"></h6>
   		</div>
-  		
-    </div>
+  		 <div class=" margin-0 vh-100" id="modal-viewport"  data-ghost-class="modal-ghost"></div>
+    <!--</div>-->
   </body>
     
     <script>
@@ -131,8 +131,8 @@
   
     <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-init/CoCreate-init.js"></script>-->
   
-    <script src="https://cdn.cocreate.app/CoCreateUI.min.js"></script>
-    <script src="https://server.cocreate.app/CoCreate-components/CoCreate-modal/CoCreate-modal.js"></script> 
+    <!--<script src="https://server.cocreate.app/CoCreateUI/dist/CoCreateUI.min.js"></script>-->
+    <!--<script src="https://server.cocreate.app/CoCreate-components/CoCreate-modal/src/CoCreate-modal.js"></script> -->
     
     <script>
       var el_parent = document.getElementById("page-parent");

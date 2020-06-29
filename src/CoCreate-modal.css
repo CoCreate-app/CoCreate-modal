@@ -1,7 +1,24 @@
-#customVPhere {
+#modal-viewport {
 	position: relative;
-	/*height: calc(100% - 50px);*/
+	z-index: 8;
+	height: -moz-available;   
+  height: -webkit-fill-available;  
+  height: fill-available;
+  width: -moz-available;   
+  width: -webkit-fill-available;  
+  width: fill-available;
+	pointer-events: none;
+	top: 0;
 }
+
+.hide-nav + #modal-viewport{
+	margin-top:0px;
+	max-height: -moz-available;   
+  max-height: -webkit-fill-available;  
+  max-height: fill-available;
+
+}
+
 
 .modal {
 	position: absolute;
@@ -43,13 +60,16 @@
 }
 
 .modal-ghost {
+	display: none;
 	background: #999;
 	opacity: 0;
-
-	width: 300px;
-	height: 200px;
-	top: 200px;
-	left: 200px;
+  /*pointer-events: none;*/
+ /* width: 300px;*/
+	/*height: 200px;*/
+	top: 0px;
+	left: 0px;
+	z-index: 20;
+	
 
 	position: absolute;
 	margin: 0;

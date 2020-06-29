@@ -744,7 +744,7 @@ CoCreateModalContainer.prototype = {
 
 
 function CoCreateWindow(id) {
-  let container_id = (id) ? id : 'customVPhere';
+  let container_id = (id) ? id : 'modal-viewport';
   
   var el = document.getElementById(container_id);
   
@@ -787,7 +787,7 @@ CoCreateWindow.prototype = {
   },
   
   _initWndButtons: function() {
-    var closeBtns = document.querySelectorAll('.btn-wnd-close');
+    var closeBtns = document.querySelectorAll('.btn-modal-close');
     var minmaxBtn = document.querySelector('.btn-wnd-min-max');
     var parkBtn = document.querySelector('.btn-wnd-park');
     var _this = this;

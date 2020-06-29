@@ -55,6 +55,8 @@ function CoCreateModal(el, options) {
 	this.height = 0;
 	this.isParked = false;
 	
+	this.iframe = null;
+	
 
 	this.options = Object.assign(defaults, options);
 	
@@ -143,11 +145,33 @@ CoCreateModal.prototype = {
       }
       iframe.src = windowURL;
       this.el.appendChild(iframe)
+      this.iframe = iframe;
     }
   },
   
   _initEvent : function() {
     let _this = this;
+    
+    if (this.iframe) {
+      this.iframe.addEventListener('load', function() {
+        console.log(_this.iframe.contentDocument);
+        const iframeContent = _this.iframe.contentDocument;
+        const nav = iframeContent.querySelector('.nav');
+        
+        iframeContent.addEventListener('click', function() {
+           var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: _this}});
+          _this.el.parentNode.dispatchEvent(event);
+        })
+        
+        // if (nav) {
+        //   nav.addEventListener('mousemove', function(e) {
+        //     e.preventDefault();
+        //     _this._onMove(e);
+        //   })
+        // }
+        
+      });
+    }
 
     this.el.addEventListener("click", function(e) {
       var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: _this}});
@@ -246,13 +270,14 @@ CoCreateModal.prototype = {
   },
   
   _saveFetch: function() {
-    if (this.el.classList.contains(saveFetchClass)) {
-      saveHtml(this.el);
+    if (this.el.classList.contains("domEditor")) {
+      // saveHtml(this.el);
+      CoCreateHtmlTags.saveHtml(this.el);
     }
   },
   
   _onMove : function(e) {
-    this._getBoundStatus(e)
+    const data = this._getBoundStatus(e)
     this.redraw = true;
   },
   
@@ -834,7 +859,7 @@ CoCreateModalContainer.prototype = {
 /* ========================================================================= */
 
 function CoCreateWindow(id) {
-  let container_id = (id) ? id : 'customVPhere';
+  let container_id = (id) ? id : 'modal-viewport';
   this.container = null;
   this.id = container_id;
   
@@ -882,7 +907,10 @@ CoCreateWindow.prototype = {
     var el = document.getElementById(this.id);
     
     if (el) {
+      el.style.pointerEvents= "auto";
+      el.style.zIndex = 'auto'
       this.container = new CoCreateModalContainer(el);
+
       return true;
     } else {
       return false;
@@ -908,9 +936,9 @@ CoCreateWindow.prototype = {
   },
   
   _initWndButtons: function() {
-    var closeBtns = document.querySelectorAll('.btn-wnd-close');
-    var minmaxBtn = document.querySelector('.btn-wnd-maximize');
-    var parkBtn = document.querySelector('.btn-wnd-minimize');
+    var closeBtns = document.querySelectorAll('.btn-modal-close');
+    var minmaxBtn = document.querySelector('.btn-modal-maximize');
+    var parkBtn = document.querySelector('.btn-modal-minimize');
     var _this = this;
     
     if (closeBtns.length > 0) {

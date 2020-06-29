@@ -493,10 +493,10 @@ CoCreateModal.prototype = {
   
   _createTitle: function(n) {
     var header_template = `<div class="nav width-100-percent bg-light-gray"><ul class="modal-title-area">
-          <li><a class="btn-wnd-minimize"><i class="far fa-window-minimize"></i></a></li>
-          <li><a class="btn-wnd-maximize"><i class="far fa-window-restore"></i></a></li>
+          <li><a class="btn-modal-minimize"><i class="far fa-window-minimize"></i></a></li>
+          <li><a class="btn-modal-maximize"><i class="far fa-window-restore"></i></a></li>
          <!-- <li><a class="parkBtn"><i class="fas fa-dot-circle "></i></a></li> -->
-          <li><a class="btn-wnd-close"><i class="fas fa-times"></i></a></li>
+          <li><a class="btn-modal-close"><i class="fas fa-times"></i></a></li>
       </ul></div>
       <div class="parked-closeBtn"><i class="fas fa-times closeBtn"></i></div>`;
     this.el.innerHTML = header_template + this.el.innerHTML;
@@ -775,7 +775,7 @@ CoCreateModalContainer.prototype = {
 /* ========================================================================= */
 
 function CoCreateWindow(id) {
-  let container_id = (id) ? id : 'customVPhere';
+  let container_id = (id) ? id : 'modal-viewport';
   this.container = null;
   this.id = container_id;
   
@@ -849,7 +849,7 @@ CoCreateWindow.prototype = {
   },
   
   _initWndButtons: function() {
-    var closeBtns = document.querySelectorAll('.btn-wnd-close');
+    var closeBtns = document.querySelectorAll('.btn-modal-close');
     var minmaxBtn = document.querySelector('.btn-wnd-min-max');
     var parkBtn = document.querySelector('.btn-wnd-park');
     var _this = this;
