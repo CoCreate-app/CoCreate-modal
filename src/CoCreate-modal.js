@@ -6,7 +6,7 @@ window.mobilecheck = function() {
   return check;
 };
 
-function CoCreateModal(el, options) {
+function CoCreateModal(el, options, container) {
   if (!(el && el.nodeType && el.nodeType === 1)) {
 		return;
 	}
@@ -17,9 +17,9 @@ function CoCreateModal(el, options) {
 	this.NO_SNAP = -31;
 	this.SNAP_MARGIN = -10;
 	
-	if (window.mobilecheck()) {
-	  this.MARGIN = 10;
-	}
+// 	if (window.mobilecheck()) {
+// 	  this.MARGIN = 20;
+// 	}
 	
 	/** options **/
 	let defaults = {
@@ -56,6 +56,7 @@ function CoCreateModal(el, options) {
 	this.isParked = false;
 	
 	this.iframe = null;
+	this.container = container;
 	
 
 	this.options = Object.assign(defaults, options);
@@ -162,14 +163,6 @@ CoCreateModal.prototype = {
            var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: _this}});
           _this.el.parentNode.dispatchEvent(event);
         })
-        
-        // if (nav) {
-        //   nav.addEventListener('mousemove', function(e) {
-        //     e.preventDefault();
-        //     _this._onMove(e);
-        //   })
-        // }
-        
       });
     }
 
@@ -192,6 +185,7 @@ CoCreateModal.prototype = {
       var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: _this}});
       _this.el.parentNode.dispatchEvent(event);
       _this._onDown(e.touches[0]);
+      console.log('--------------------------------')
         // e.preventDefault();
     })
     
@@ -199,6 +193,10 @@ CoCreateModal.prototype = {
         var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: _this}});
         _this.el.parentNode.dispatchEvent(event);
         _this._onDown(e);
+    })
+    
+    this.el.addEventListener('touchmove', function(e) {
+        console.log('yyyyyyyyyyyyyyyyyyyyyyyyyy')
     })
 
     this._addButtonEvent()
@@ -537,8 +535,22 @@ CoCreateModal.prototype = {
     else if (!this.isParked && bound.isRight || bound.isLeft) cursor = 'ew-resize';
     else if (!this.isParked && bound.isBottom || bound.isTop) cursor = 'ns-resize';
     else if (this._isMovable()) cursor = "move";
-    
     this.el.style.cursor = cursor;
+    this.setContainerEvent(cursor);
+    
+    
+  },
+  
+  //. setParent Event
+  setContainerEvent(status) {
+    console.log(status)
+    if (!this.container) return;
+    if (status != 'default') {
+      
+      this.container.style.pointerEvents = "auto";
+    } else {
+      this.container.style.pointerEvents = "none";
+    }
   },
   
   _isMovable() {
@@ -573,7 +585,20 @@ CoCreateModal.prototype = {
   _createDragArea: function() {
     this.dragArea = document.createElement("div");
     this.dragArea.classList.add("modal-drag-area");
+    
+    let left_area = document.createElement("div");
+    left_area.classList.add("modal-drag-area-left");
+
+    let right_area = document.createElement("div");
+    right_area.classList.add("modal-drag-area-right");
+
+    let bottom_area = document.createElement("div");
+    bottom_area.classList.add("modal-drag-area-bottom");
+    
     this.el.appendChild(this.dragArea);
+    this.el.appendChild(left_area);
+    this.el.appendChild(right_area);
+    this.el.appendChild(bottom_area);
   },
   
   resize: function(dx, dy, width, height) {
@@ -667,7 +692,7 @@ CoCreateModalContainer.prototype = {
     var el_children = document.querySelectorAll("." + this.modalClass);
     
     for (var i = 0; i < el_children.length; i++) {
-      this.modals.push(new CoCreateModal(el_children[i], {}));
+      this.modals.push(new CoCreateModal(el_children[i], {}, this.el));
     }
     
     if (!this.selectedModal) {
@@ -678,6 +703,7 @@ CoCreateModalContainer.prototype = {
   
   _initEvent : function() {
     let _this = this;
+    
     this.el.addEventListener('mousemove', function(e) {
       e.preventDefault();
       if (_this.selectedModal) {
@@ -693,13 +719,14 @@ CoCreateModalContainer.prototype = {
     }, true);
 
     this.el.addEventListener('touchmove', function(e) {
+      // e.preventDefault();
       if (_this.selectedModal) {
       _this.selectedModal._onMove(e.touches[0]);
       }
-      e.preventDefault();
     })
     
     this.el.addEventListener('touchend', function(e) {
+      // e.preventDefault();
       if (_this.selectedModal) {
       _this.selectedModal._onUp(e.touches[0]);
       }
@@ -762,7 +789,7 @@ CoCreateModalContainer.prototype = {
     
     this.el.appendChild(node)
     
-    var modal = new CoCreateModal(node, attr);
+    var modal = new CoCreateModal(node, attr, this.el);
     this.modals.push(modal)
     
     this._selectModal(node);
@@ -907,8 +934,6 @@ CoCreateWindow.prototype = {
     var el = document.getElementById(this.id);
     
     if (el) {
-      el.style.pointerEvents= "auto";
-      el.style.zIndex = 'auto'
       this.container = new CoCreateModalContainer(el);
 
       return true;
