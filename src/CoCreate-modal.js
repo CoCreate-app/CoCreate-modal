@@ -17,6 +17,8 @@ function CoCreateModal(el, options, container) {
 	this.NO_SNAP = -31;
 	this.SNAP_MARGIN = -10;
 	
+	this.RIGHT_SCROL = 5;
+	
 // 	if (window.mobilecheck()) {
 // 	  this.MARGIN = 20;
 // 	}
@@ -182,6 +184,7 @@ CoCreateModal.prototype = {
       console.log('resizing event trigger')
     })
     this.el.addEventListener('touchstart', function(e) {
+      _this.changeRightDragEl(true);
       var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: _this}});
       _this.el.parentNode.dispatchEvent(event);
       _this._onDown(e.touches[0]);
@@ -189,24 +192,44 @@ CoCreateModal.prototype = {
         // e.preventDefault();
     })
     
-    this.el.addEventListener('mousedown', function(e) {
-        var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: _this}});
-        _this.el.parentNode.dispatchEvent(event);
-        _this._onDown(e);
+    this.el.addEventListener('mousemove', function(e) {
+        _this.changeRightDragEl(false);
     })
     
-    this.el.addEventListener('touchmove', function(e) {
-        console.log('yyyyyyyyyyyyyyyyyyyyyyyyyy')
+    this.el.addEventListener('mousedown', function(e) {
+      
+      var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: _this}});
+      _this.el.parentNode.dispatchEvent(event);
+      _this._onDown(e);
+    })
+    
+    this.el.addEventListener('mouseup', function(e) {
+        // _this.changeRightDragEl(true);
     })
 
     this._addButtonEvent()
     this.el.addEventListener("modal-resizeend", function(e) {
       _this._saveFetch();
+      // _this.changeRightDragEl(true);
+
     });
     
     this.el.addEventListener("modal-moveend", function(e) {
       _this._saveFetch();
+      // _this.changeRightDragEl(true);
+
     })
+  },
+  
+  changeRightDragEl: function(isRevert = true) {
+      const right_el = this.el.querySelector('.modal-drag-area-right')
+      
+      const size = isRevert ? "0px" : "-10px"
+      if (right_el) {
+        right_el.style.right = size;
+      }
+      this.RIGHT_SCROL = !isRevert ? 0 : 5;
+      
   },
   
   _addButtonEvent: function() {
@@ -394,7 +417,7 @@ CoCreateModal.prototype = {
     this.boundStatus = {
       isTop : y < this.MARGIN && y > -this.MARGIN,
       isLeft : x < this.MARGIN && x > -this.MARGIN,
-      isRight : x >= bound.width - this.MARGIN && x <= bound.width + this.MARGIN,
+      isRight : x >= bound.width - this.RIGHT_SCROL && x <= bound.width + this.MARGIN + (this.MARGIN - this.RIGHT_SCROL),
       isBottom: y >= bound.height - this.MARGIN && y <= bound.height + this.MARGIN
     }
     

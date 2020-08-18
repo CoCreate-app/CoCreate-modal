@@ -492,7 +492,7 @@ CoCreateModal.prototype = {
   },
   
   _createTitle: function(n) {
-    var header_template = `<div class="nav width-100-percent bg-light-gray"><ul class="modal-title-area">
+    var header_template = `<div class="nav width:100% bg-light-gray"><ul class="modal-title-area">
           <li><a class="btn-modal-minimize"><i class="far fa-window-minimize"></i></a></li>
           <li><a class="btn-modal-maximize"><i class="far fa-window-restore"></i></a></li>
          <!-- <li><a class="parkBtn"><i class="fas fa-dot-circle "></i></a></li> -->
