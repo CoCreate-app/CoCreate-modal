@@ -89,6 +89,8 @@ CoCreateModal.prototype = {
     var y =         opt.y     ? opt.y       : this.el.getAttribute("data-modal_y")
     var showHeader= opt.header? opt.header  : this.el.getAttribute("data-modal_header")
     
+    var attributes = opt.attributes;
+    
     //. set default
     // this.el.style.width = "300px";
     // this.el.style.height = "100%";
@@ -137,19 +139,47 @@ CoCreateModal.prototype = {
     
     this.el.innerHTML = this.el.innerHTML + `<div class="parked-closeBtn"><i class="fas fa-times closeBtn"></i></div>`;
     
-        
+    // let iframe = attributes['data-modal_iframe'] === "false" ? document.createElement("div") : document.createElement("iframe");
+    // iframe.style.width = "100%"; // calc(100% - 4px);
+    // iframe.style.height = "100%";
+    // if (this.headerArea) {
+    //   // iframe.style.height = "calc( 100% - " + (this.headerArea.clientHeight + 5) + "px )";     
+    //   iframe.style.height = "calc( 100% - 45px)";
+    // }
+    
+    let iframe = null;
     if (windowURL && windowURL != "") {
-      var iframe = document.createElement("iframe");
-      iframe.style.width = "100%"; // calc(100% - 4px);
-      iframe.style.height = "100%";
-      if (this.headerArea) {
-        // iframe.style.height = "calc( 100% - " + (this.headerArea.clientHeight + 5) + "px )";
-        iframe.style.height = "calc( 100% - 45px)";
-      }
+      iframe = this.__createContainer(this.headerArea);
       iframe.src = windowURL;
-      this.el.appendChild(iframe)
-      this.iframe = iframe;
+    } else if (attributes) {
+      iframe = this.__createContainer(this.headerArea, attributes['data-modal_iframe'] === "false" ? "div" : "iframe");
+      if (attributes['data-pass_to']) {
+        iframe.setAttribute('data-pass_id', attributes['data-pass_to']);
+        iframe.setAttribute('data-collection', "");
+        iframe.setAttribute('data-document_id', "");
+        iframe.setAttribute('data-request_id', CoCreateWindow.generateUUID(20));
+      }
+      if (attributes['data-pass_name']) {
+        iframe.setAttribute('name', attributes['data-pass_name']);
+      }
+    } else {
+      return;
     }
+    
+    this.el.appendChild(iframe)
+    this.iframe = iframe;
+  },
+  
+  __createContainer: function(isHeader, type) {
+    const tag = type || "iframe";
+    
+    let container = document.createElement(tag);
+    container.style.width = "100%";
+    container.style.height = "100%";
+    if (isHeader) {
+      container.style.height = "calc(100% - 45px)";
+    }
+    return container;
   },
   
   _initEvent : function() {
@@ -293,7 +323,7 @@ CoCreateModal.prototype = {
   _saveFetch: function() {
     if (this.el.classList.contains("domEditor")) {
       // saveHtml(this.el);
-      CoCreateHtmlTags.saveHtml(this.el);
+      CoCreateHtmlTags.save(this.el);
     }
   },
   
@@ -902,6 +932,7 @@ CoCreateModalContainer.prototype = {
     } else {
       this.selectedModal = null;
     }
+    this.el.style.pointerEvents = "none";
   }
 
 }
@@ -928,7 +959,6 @@ function CoCreateWindow(id) {
   }
   
   this._createContainer();
-  this._initButtons();
   this._initWndButtons();
   
   this._initSocket();
@@ -953,7 +983,6 @@ CoCreateWindow.prototype = {
       return true
     }
     
-    
     var el = document.getElementById(this.id);
     
     if (el) {
@@ -964,25 +993,7 @@ CoCreateWindow.prototype = {
       return false;
     }
   },
-  _initButtons: function() {
-    let btns = document.querySelectorAll('[target=modal][href]');
-    var wnd_container = this.container;
-    var _this = this;
-    
-    for (var i = 0; i < btns.length; i++) {
-      
-      btns[i].addEventListener('click', function(e) {
-        e.preventDefault();
-        CoCreateLogic.storePassData(this);
-        if (!_this.container) {
-          return;
-        }
-        
-        _this.openWindow(this);
-      });
-    }    
-  },
-  
+
   _initWndButtons: function() {
     var closeBtns = document.querySelectorAll('.btn-modal-close');
     var minmaxBtn = document.querySelector('.btn-modal-maximize');
@@ -994,7 +1005,6 @@ CoCreateWindow.prototype = {
         var closeBtn = closeBtns[i];
         closeBtn.addEventListener('click', function(e) {
           e.preventDefault();
-          
           _this.sendWindowBtnEvent('close');
         })  
       }
@@ -1079,7 +1089,7 @@ CoCreateWindow.prototype = {
   },
    
   openWindow: function(aTag) {
-
+    
     var attr = {
       url:    aTag.getAttribute('href'),
       x:      aTag.getAttribute('data-modal_x'),
@@ -1089,10 +1099,11 @@ CoCreateWindow.prototype = {
       ajax:   aTag.getAttribute('data-modal_ajax'),
       color:  aTag.getAttribute('data-modal_color'),
       header: aTag.getAttribute('data-modal_header') ? aTag.getAttribute('data-modal_header'): "true", 
-
+      
+      attributes: CoCreateUtils.getAttributes(aTag)
     }
     
-    var open_type = aTag.getAttribute('data-open_in');
+    var open_type = aTag.getAttribute('data-modal_open');
     open_type = open_type ? open_type : 'root';
     
     CoCreateStorage.rootPageId = this.rootId;
