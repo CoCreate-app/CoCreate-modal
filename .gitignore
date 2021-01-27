@@ -1,3 +1,2 @@
-# ignore  app.js
-app.js
-package-lock.json
+# ignore
+node_modules

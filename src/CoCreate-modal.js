@@ -120,12 +120,16 @@ CoCreateModal.prototype = {
     if (x && x != "") {
       this.el.style.left = x;
     } else {
-      this.el.style.left =  (this.el.parentElement.clientWidth - this.el.offsetWidth) / 2;
+      let hX = (this.el.parentElement.clientWidth - this.el.offsetWidth) / 2;
+      hX = hX > 0 ? hX : 0;
+      this.el.style.left = hX + "px";
     }
     if (y && y != "") {
       this.el.style.top = y;
     } else {
-      this.el.style.top = "0px";
+      let hY = (this.el.parentElement.clientHeight - this.el.offsetHeight) / 2
+      hY = hY > 0 ? hY : 0
+      this.el.style.top = hY + "px";
     }
     if (color && color !== "") this.el.style.borderColor = color;
     
@@ -138,14 +142,6 @@ CoCreateModal.prototype = {
     }
     
     this.el.innerHTML = this.el.innerHTML + `<div class="parked-closeBtn"><i class="fas fa-times closeBtn"></i></div>`;
-    
-    // let iframe = attributes['data-modal_iframe'] === "false" ? document.createElement("div") : document.createElement("iframe");
-    // iframe.style.width = "100%"; // calc(100% - 4px);
-    // iframe.style.height = "100%";
-    // if (this.headerArea) {
-    //   // iframe.style.height = "calc( 100% - " + (this.headerArea.clientHeight + 5) + "px )";     
-    //   iframe.style.height = "calc( 100% - 45px)";
-    // }
     
     let iframe = null;
     if (windowURL && windowURL != "") {
@@ -178,6 +174,10 @@ CoCreateModal.prototype = {
     container.style.height = "100%";
     if (isHeader) {
       container.style.height = "calc(100% - 45px)";
+    }
+    
+    if (type != "iframe") {
+      container.setAttribute('class', 'domEditor');
     }
     return container;
   },
