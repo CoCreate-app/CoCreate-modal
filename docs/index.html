@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>CoCreate-modal Documentation | CoCreateJS </title>
+        <title>CoCreate-modal Documentation | CoCreateCSS</title>
         <link rel="icon" type="image/png" sizes="32x32" href="https://cocreate.app/images/favicon.ico">
-        <meta name="description" content="A simple HTML5 and pure javascript component. Easy configuration using data-attributes and highly styleable." />
+        <meta name="description" content="Utility first css framework, design faster and improve on your css by using native inline styles as classes. No learning curve, use what you already know" />
         <meta name="keywords" content="helper classes, utility classes, css framework, css library, inline style classes" />
         <meta name="robots" content="index,follow" />
         
@@ -28,7 +28,7 @@
     </head>
 
     <body>
-        <div data-collection="" data-document_id="" name="" id="cocreate-modal" class="padding:15px">
+        <div data-collection="" data-document_id="" name="" id="CoCreate-modal" class="padding:15px">
             <div class="display:flex flex-wrap:wrap justify-content:space-between">
                 <div class="display:flex align-items:center">
                     <h2>CoCreate-modal</h2>
@@ -42,34 +42,75 @@
                 </div>
             </div>
             <p class="max-width:500px margin:20px_0px">A simple HTML5, CSS and pure javascript component. Easy configuration using data-attributes and highly styleable.</p>
-            <div id="modal-section" class="display:flex flex-wrap:wrap">
+            <div id="xxxxx-section" class="display:flex flex-wrap:wrap">
                 <div class="flex-grow:1 min-width:300px width:50% padding:0px_10px margin:20px_0px">
-                <h2 class="border-bottom:1px_solid_lightgrey padding:5px_0px">Install</h2>
-                <pre><code class="language-javascript">npm install cocreate-modal</code></pre>
-                <p class="padding:10px_0px">Or you can use cdn link:</p>
-                <pre><code class="language-javascript">https://cdn.cocreate.app/CoCreate-modal.min.js</code></pre>
-
-                <h2 class="border-bottom:1px_solid_lightgrey margin-top:80px padding:5px_0px">Usage</h2>
+    
+                    <h2 class="border-bottom:1px_solid_lightgrey padding:5px_0px">Reference</h2>
                     <div class="">
-                        <p class="padding:10px_0px">This is modal reference</p>
+                    <p class="padding-top:15px">CoCreate-modal uses &lt;a&gt; tag.</p>
+                    <p class="padding-top:15px">When you click &lt;a&gt; tag, modal comes to the surface.</p>
                 
                         <div class="flex-grow:1 min-width:300px width:100%">
                             <pre>
-                                <code>&lt;div&gt;&lt;/div&gt;</code>
+                        <code>
+&lt;button&gt;
+  &lt;a target="modal" href="https://server.cocreate.app/CoCreate-adminUI/module_datatable.html"
+    data-modal_ajax="false"
+    data-modal_width="520px"
+    data-modal_height="100%"
+    data-modal_color="#229954"
+    data-modal_header="false"
+    data-modal_x="0px"
+    data-modal_y="0px"
+    data-open_in="page"&gt;
+    Show Modal On Page
+  &lt;/a&gt;
+&lt;/button&gt;
+                        </code>
                             </pre>
                         </div>
-                        <p class="padding:10px_0px">This is modal reference</p>
-                        <p class="padding:10px_0px">This is modal reference</p>
                     </div>
                     <h2 class="border-bottom:1px_solid_lightgrey padding:5px_0px">Attributes</h2>
                     <ul class="list-style-type:none ">
                         <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
-                            <h4><span>data-modal</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge warning">optional</span></h4>
-                            <p>modal-attribute</p>
+                            <h4><span>target</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
+                            <p>Target must be "modal".</p>
                         </li>
                         <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
-                            <h4><span>data-modal</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge warning">optional</span></h4>
-                            <p>modal-attribute</p>
+                            <h4><span>href</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge danger">required</span></h4>
+                            <p>Href attribute indicates html file to set in modal.</p>
+                        </li>
+                        <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
+                            <h4><span>data-modal_ajax</span> <span class="cocreate-badge success">boolean</span> <span class="cocreate-badge warning">optional</span></h4>
+                            <p>Attribute whether to use ajax or not.</p>
+                        </li>
+                        <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
+                            <h4><span>data-modal_width</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge warning">optional</span></h4>
+                            <p>Width of modal. Unit can be pixel or percent.</p>
+                        </li>
+                        <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
+                            <h4><span>data-modal_height</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge warning">optional</span></h4>
+                            <p>Height of modal. Unit can be pixel or percent.</p>
+                        </li>
+                        <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
+                            <h4><span>data-modal_color</span> <span class="cocreate-badge success">color</span> <span class="cocreate-badge warning">optional</span></h4>
+                            <p>Color of modal border.</p>
+                        </li>
+                        <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
+                            <h4><span>data-modal_header</span> <span class="cocreate-badge success">boolean</span> <span class="cocreate-badge warning">optional</span></h4>
+                            <p>Attribute whether to show header or not.</p>
+                        </li>
+                        <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
+                            <h4><span>data-modal_x</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge warning">optional</span></h4>
+                            <p>Position X of modal.</p>
+                        </li>
+                        <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
+                            <h4><span>data-modal_y</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge warning">optional</span></h4>
+                            <p>Position Y of modal.</p>
+                        </li>
+                        <li class="padding:15px_0px border-bottom:1px_solid_lightgrey">
+                            <h4><span>data-open_in</span> <span class="cocreate-badge success">string</span> <span class="cocreate-badge warning">optional</span></h4>
+                            <p>Attribute where to show modal in. "page" for current page. "parent" for parent page. "root" for root page.</p>
                         </li>
                     </ul>
                 </div>
