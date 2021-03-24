@@ -1,6 +1,9 @@
 import ModalContainer from "./container.js"
 import { generateUUID, ModalStorage } from "./utils.js"
-
+import observer from '../../CoCreate-observer/src';
+import utils from '../../../CoCreateJS/src/utils';
+import {socket, crud} from '../../../CoCreateJS/src';
+import './CoCreate-modal.css';
 
 function CoCreateWindow(id) {
   let container_id = (id) ? id : 'modal-viewport';
@@ -106,12 +109,12 @@ CoCreateWindow.prototype = {
       }
     }
 
-    CoCreate.socket.send('windowBtnEvent', json);
+    socket.send('windowBtnEvent', json);
   },
   
   _initSocket: function() {
     var _this = this;
-    CoCreate.socket.listen('openWindow', function(data) {
+    socket.listen('openWindow', function(data) {
       if (data.parentId == _this.pageId) {
         _this.container._createModal(data);
       }
@@ -120,7 +123,7 @@ CoCreateWindow.prototype = {
       // }
     }),
     
-    CoCreate.socket.listen('windowBtnEvent', function(data) {
+    socket.listen('windowBtnEvent', function(data) {
       if (data.parentId == _this.pageId) {
         
         var pageId = data.pageId;
@@ -163,7 +166,7 @@ CoCreateWindow.prototype = {
       color:  aTag.getAttribute('data-modal_color'),
       header: aTag.getAttribute('data-modal_header') ? aTag.getAttribute('data-modal_header'): "true", 
       
-      attributes: CoCreate.utils.getAttributes(aTag)
+      attributes: utils.getAttributes(aTag)
     }
     
     var open_type = aTag.getAttribute('data-modal_open');
@@ -201,7 +204,7 @@ CoCreateWindow.prototype = {
       }
     } else {
       // attr.parentId = this.parentId;
-      CoCreate.socket.send('openWindow', {
+      socket.send('openWindow', {
         "apiKey": config.apiKey,
         "securityKey": config.securityKey,
         "organization_id": config.organization_Id,
