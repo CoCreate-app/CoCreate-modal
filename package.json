@@ -59,6 +59,7 @@
     "terser-webpack-plugin": "^5.1.1"
   },
   "dependencies": {
+    "@cocreate/cocreatejs": "^1.0.0",
     "@cocreate/docs": "^1.0.3"
   }
 }

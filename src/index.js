@@ -2,7 +2,7 @@ import ModalContainer from "./container.js"
 import { generateUUID, ModalStorage } from "./utils.js"
 import observer from '@cocreate/observer';
 import utils from '@cocreate/utils';
-import {socket, crud} from '../../../CoCreateJS/src';
+import {socket, crud} from '@cocreate/cocreatejs';
 import './CoCreate-modal.css';
 
 function CoCreateWindow(id) {
