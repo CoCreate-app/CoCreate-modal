@@ -2,7 +2,7 @@ import ModalContainer from "./container.js"
 import { generateUUID, ModalStorage } from "./utils.js"
 import observer from '@cocreate/observer';
 import utils from '@cocreate/utils';
-import {socket, crud} from '@cocreate/cocreatejs';
+import message from '@cocreate/message';
 import './CoCreate-modal.css';
 
 function CoCreateWindow(id) {
@@ -109,12 +109,12 @@ CoCreateWindow.prototype = {
       }
     }
 
-    socket.send('windowBtnEvent', json);
+    message.send('windowBtnEvent', json);
   },
   
   _initSocket: function() {
     var _this = this;
-    socket.listen('openWindow', function(data) {
+    message.listen('openWindow', function(data) {
       if (data.parentId == _this.pageId) {
         _this.container._createModal(data);
       }
@@ -123,7 +123,7 @@ CoCreateWindow.prototype = {
       // }
     }),
     
-    socket.listen('windowBtnEvent', function(data) {
+    message.listen('windowBtnEvent', function(data) {
       if (data.parentId == _this.pageId) {
         
         var pageId = data.pageId;
@@ -204,7 +204,7 @@ CoCreateWindow.prototype = {
       }
     } else {
       // attr.parentId = this.parentId;
-      socket.send('openWindow', {
+      message.send('openWindow', {
         "apiKey": config.apiKey,
         "securityKey": config.securityKey,
         "organization_id": config.organization_Id,
