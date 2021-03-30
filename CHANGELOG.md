@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.2...v1.0.3) (2021-03-30)
+
+
+### Bug Fixes
+
+* import paths using npm ([04f7878](https://github.com/CoCreate-app/CoCreate-modal/commit/04f78780e22b747c1e35485ede3848bdbfec7908))
+
 ## [1.0.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.1...v1.0.2) (2021-03-30)
 
 
