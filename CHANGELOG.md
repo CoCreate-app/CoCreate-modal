@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.3...v1.0.4) (2021-03-31)
+
+
+### Bug Fixes
+
+* remove yarn.lock and package-lock.json ([ee01b7c](https://github.com/CoCreate-app/CoCreate-modal/commit/ee01b7c86f17dfa9a8389d1296638619f6186f70))
+
 ## [1.0.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.2...v1.0.3) (2021-03-30)
 
 
