@@ -59,6 +59,9 @@
     "terser-webpack-plugin": "^5.1.1"
   },
   "dependencies": {
-    "@cocreate/docs": "^1.0.3"
+    "@cocreate/docs": "^1.0.3",
+    "@cocreate/observer": "^1.0.0",
+    "@cocreate/message-client": "^1.0.0",
+    "@cocreate/utils": "^1.0.0"
   }
 }
