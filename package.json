@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/modal",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A simple modal component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API.",
   "keywords": [
     "modal",
