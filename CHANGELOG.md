@@ -1,3 +1,11 @@
+## [1.0.6](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.5...v1.0.6) (2021-04-19)
+
+
+### Bug Fixes
+
+* ci and build process ([76639e3](https://github.com/CoCreate-app/CoCreate-modal/commit/76639e38ba7ba177abad766433e8da7e7258d4be))
+* npm publish and cdn deployment ([2433ece](https://github.com/CoCreate-app/CoCreate-modal/commit/2433eced3da08e7273c574980e288227394d440c))
+
 ## [1.0.5](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.4...v1.0.5) (2021-04-15)
 
 
