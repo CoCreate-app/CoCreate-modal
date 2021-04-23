@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.7...v1.0.8) (2021-04-23)
+
+
+### Bug Fixes
+
+* readme and documentation. Removed securitykeys ([68903d3](https://github.com/CoCreate-app/CoCreate-modal/commit/68903d3f3d6ae5541685334b73cd8105842aa265))
+
 ## [1.0.7](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.6...v1.0.7) (2021-04-19)
 
 
