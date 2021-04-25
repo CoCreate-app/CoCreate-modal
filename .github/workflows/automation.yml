@@ -101,3 +101,11 @@ jobs:
       - run: git pull origin master
       - run: git commit --allow-empty -m "add dist bundle"
       - run: git push origin master
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: update documentation
+        uses: CoCreate-app/CoCreate-docs@master
