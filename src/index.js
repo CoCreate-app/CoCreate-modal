@@ -1,5 +1,6 @@
 import ModalContainer from "./container.js"
-import { generateUUID, ModalStorage } from "./utils.js"
+import { ModalStorage } from "./utils.js"
+import uuid from '@cocreate/uuid'
 import observer from '@cocreate/observer';
 import utils from '@cocreate/utils';
 import message from '@cocreate/message-client';
@@ -10,7 +11,7 @@ function CoCreateWindow(id) {
   this.container = null;
   this.id = container_id;
   
-  this.pageId = generateUUID(20);
+  this.pageId = uuid.generate();
   this.isRoot = this._checkRoot();
   
   

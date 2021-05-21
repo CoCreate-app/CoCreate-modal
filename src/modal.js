@@ -1,4 +1,4 @@
-import {generateUUID} from "./utils.js"
+import uuid from '@cocreate/uuid'
 
 
 function Modal(el, options, container) {
@@ -24,7 +24,7 @@ function Modal(el, options, container) {
 	  minHeight: 40,
 	};
 	
-	this.id = generateUUID(20);
+	this.id = uuid.generate();
 	this.el = el;
 	this.clicked = null;
 	this.redraw = false;
@@ -148,7 +148,7 @@ Modal.prototype = {
         iframe.setAttribute('data-pass_id', attributes['data-pass_to']);
         iframe.setAttribute('data-collection', "");
         iframe.setAttribute('data-document_id', "");
-        iframe.setAttribute('data-request_id', generateUUID(20));
+        iframe.setAttribute('data-request_id', uuid.generate());
       }
       if (attributes['data-pass_name']) {
         iframe.setAttribute('name', attributes['data-pass_name']);
