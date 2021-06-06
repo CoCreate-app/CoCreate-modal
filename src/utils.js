@@ -1,17 +1,3 @@
-function generateUUID(length) {
-  var result           = '';
-  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
-  for ( var i = 0; i < length; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  
-  var d = new Date().toTimeString();
-  var random = d.replace(/[\W_]+/g, "").substr(0,6);
-  result += random;
-  return result;
-}
-
 var ModalStorage = {};
 
 Object.defineProperty(ModalStorage, "rootPageId", {
@@ -30,4 +16,4 @@ Object.defineProperty(ModalStorage, "pageId", {
 })
 
 
-export {generateUUID, ModalStorage};
+export {ModalStorage};

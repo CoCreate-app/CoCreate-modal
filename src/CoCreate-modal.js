@@ -29,7 +29,7 @@ function CoCreateModal(el, options, container) {
 	  minHeight: 40,
 	};
 	
-	this.id = CoCreateWindow.generateUUID(20);
+	this.id = CoCreate.uuid.generate(20);
 	this.el = el;
 	this.clicked = null;
 	this.redraw = false;
@@ -153,7 +153,7 @@ CoCreateModal.prototype = {
         iframe.setAttribute('data-pass_id', attributes['data-pass_to']);
         iframe.setAttribute('data-collection', "");
         iframe.setAttribute('data-document_id', "");
-        iframe.setAttribute('data-request_id', CoCreateWindow.generateUUID(20));
+        iframe.setAttribute('data-request_id', CoCreate.uuid.generate(20));
       }
       if (attributes['data-pass_name']) {
         iframe.setAttribute('name', attributes['data-pass_name']);
@@ -944,7 +944,7 @@ function CoCreateWindow(id) {
   this.container = null;
   this.id = container_id;
   
-  this.pageId = CoCreateWindow.generateUUID(20);
+  this.pageId = CoCreate.uuid.generate(20);
   this.isRoot = this._checkRoot();
   
   
@@ -1146,20 +1146,6 @@ CoCreateWindow.prototype = {
       })
     }
   },
-}
-
-CoCreateWindow.generateUUID = function(length) {
-  var result           = '';
-  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  var charactersLength = characters.length;
-  for ( var i = 0; i < length; i++ ) {
-    result += characters.charAt(Math.floor(Math.random() * charactersLength));
-  }
-  
-  var d = new Date().toTimeString();
-  var random = d.replace(/[\W_]+/g, "").substr(0,6);
-  result += random;
-  return result;
 }
 
 var CoCreateStorage = {};
