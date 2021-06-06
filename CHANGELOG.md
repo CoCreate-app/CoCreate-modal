@@ -1,3 +1,12 @@
+## [1.0.11](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.10...v1.0.11) (2021-06-06)
+
+
+### Bug Fixes
+
+* synatax error in package.json ([1f2b200](https://github.com/CoCreate-app/CoCreate-modal/commit/1f2b200006109ebf1ea2204b934862db9c635805))
+* Update docs and package.json descriptions ([00f9e60](https://github.com/CoCreate-app/CoCreate-modal/commit/00f9e603c0da65733c15a2741dc50c6ae636b151))
+* update packages, add uuid, add data-parse to demos ([f3ecaa0](https://github.com/CoCreate-app/CoCreate-modal/commit/f3ecaa05bef0db329cfd64f8b44c22d20306e89d))
+
 ## [1.0.10](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.9...v1.0.10) (2021-04-27)
 
 
