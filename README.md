@@ -1,6 +1,6 @@
 # CoCreate-modal
 
-A simple modal component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API. Take it for a spin in our [playground!](https://cocreate.app/docs/modal)
+A draggable, customizable Pop up that toggle hiddent content  via attributes. Great for multitasking and showing multiple views. Take it for a spin in our [playground!](https://cocreate.app/docs/modal)
 
 ![GitHub file size in bytes](https://img.shields.io/github/size/CoCreate-app/CoCreate-modal/dist/CoCreate-modal.min.js?label=minified%20size&style=for-the-badge)
 ![GitHub latest release](https://img.shields.io/github/v/release/CoCreate-app/CoCreate-modal?style=for-the-badge)
