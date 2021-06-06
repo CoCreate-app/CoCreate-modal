@@ -1,8 +1,7 @@
 {
   "name": "@cocreate/modal",
   "version": "1.0.10",
-  "description": "A draggable, customizable Pop up that toggle hiddent content  via attributes. Great for multitasking and showing multiple views.
-  ",
+  "description": "A draggable, movable and resizable modal. customizable via attributes, great for popups, alerts, multitasking and displaying multiple views.",
   "keywords": [
     "modal",
     "cocreate",
