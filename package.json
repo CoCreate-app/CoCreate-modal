@@ -1,7 +1,8 @@
 {
   "name": "@cocreate/modal",
   "version": "1.0.10",
-  "description": "A simple modal component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API.",
+  "description": "A draggable, customizable Pop up that toggle hiddent content  via attributes. Great for multitasking and showing multiple views.
+  ",
   "keywords": [
     "modal",
     "cocreate",
