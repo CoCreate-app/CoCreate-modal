@@ -1,3 +1,10 @@
+## [1.0.12](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.11...v1.0.12) (2021-06-09)
+
+
+### Bug Fixes
+
+* Modal sendMessage to parent ([304c015](https://github.com/CoCreate-app/CoCreate-modal/commit/304c0158c9723b722a3f44c76688dac9c1f422e9))
+
 ## [1.0.11](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.10...v1.0.11) (2021-06-06)
 
 
