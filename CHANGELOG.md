@@ -1,3 +1,10 @@
+## [1.0.13](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.12...v1.0.13) (2021-06-09)
+
+
+### Bug Fixes
+
+* add missing package uuid ([82c4a98](https://github.com/CoCreate-app/CoCreate-modal/commit/82c4a98d2b8dfba746342fa76b2e1452c8226623))
+
 ## [1.0.12](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.11...v1.0.12) (2021-06-09)
 
 
