@@ -99,18 +99,22 @@ CoCreateWindow.prototype = {
   
   sendWindowBtnEvent: function(type) {
     var json = {
-      "apiKey": config.apiKey,
-      "securityKey": config.securityKey,
-      "organization_id": config.organization_Id,
-      "data": {
-        "parentId": this.parentId,
-        "pageId": this.pageId,
-        "type": type,
-        "author": "jin"
+      apiKey: config.apiKey,
+      securityKey: config.securityKey,
+      organization_id: config.organization_Id,
+      broadcast_sender: true,
+      "emit": {
+        message: 'windowBtnEvent',
+        data: {
+          "parentId": this.parentId,
+          "pageId": this.pageId,
+          "type": type,
+          "author": "jin"
+        }
       }
     }
 
-    message.send('windowBtnEvent', json);
+    message.send(json);
   },
   
   _initSocket: function() {
