@@ -871,6 +871,14 @@
   dependencies:
     "@cocreate/docs" "^1.0.3"
 
+"@cocreate/uuid@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@cocreate/uuid/-/uuid-1.0.6.tgz#f7bf628dcb5e337c9a6f93d879375ae767c98fea"
+  integrity sha512-2f9IbzQibFSytY/FvwL/R5Cc9VGYM0RHI6HHTZTvsTTtfhT55NGlTsltqn39S1DTq0IM4M0vV4ls7RzLxMp75Q==
+  dependencies:
+    "@cocreate/docs" "^1.0.3"
+    mini-css-extract-plugin "^1.5.0"
+
 "@discoveryjs/json-ext@^0.5.0":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
