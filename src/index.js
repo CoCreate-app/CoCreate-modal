@@ -208,13 +208,16 @@ CoCreateWindow.prototype = {
         this.container._createModal(attr);  
       }
     } else {
-      // attr.parentId = this.parentId;
-      message.send('openWindow', {
-        "apiKey": config.apiKey,
-        "securityKey": config.securityKey,
-        "organization_id": config.organization_Id,
-         data: attr
-      })
+      message.send({
+        apiKey: config.apiKey,
+        securityKey: config.securityKey,
+        organization_id: config.organization_Id,
+        broadcast_sender: true,
+        "emit": {
+          message: 'openWindow',
+          data: attr
+        }
+      });
     }
   },
 }
