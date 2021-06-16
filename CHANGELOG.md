@@ -1,3 +1,10 @@
+## [1.0.14](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.13...v1.0.14) (2021-06-16)
+
+
+### Bug Fixes
+
+* Open window in root or parent ([306d8e9](https://github.com/CoCreate-app/CoCreate-modal/commit/306d8e90d47308ee2241d71fe6c7d38707955803))
+
 ## [1.0.13](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.12...v1.0.13) (2021-06-09)
 
 
