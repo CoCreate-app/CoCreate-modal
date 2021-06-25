@@ -61,11 +61,11 @@
     "webpack-log": "^3.0.1"
   },
   "dependencies": {
-    "@cocreate/docs": "^1.0.0",
-    "@cocreate/message-client": "^1.0.0",
-    "@cocreate/observer": "^1.0.0",
-    "@cocreate/socket-client": "^1.0.0",
-    "@cocreate/utils": "^1.0.0",
-    "@cocreate/uuid": "^1.0.0"
+    "@cocreate/docs": "^1.1.14",
+    "@cocreate/message-client": "^1.0.9",
+    "@cocreate/observer": "^1.2.4",
+    "@cocreate/socket-client": "^1.1.5",
+    "@cocreate/utils": "^1.0.13",
+    "@cocreate/uuid": "^1.0.9"
   }
 }
