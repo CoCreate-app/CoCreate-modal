@@ -1,3 +1,10 @@
+## [1.0.18](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.17...v1.0.18) (2021-06-30)
+
+
+### Bug Fixes
+
+* automated and manual workflows ([3e9c0e4](https://github.com/CoCreate-app/CoCreate-modal/commit/3e9c0e4164a4f6ce359045e778074f24e0fde8c6))
+
 ## [1.0.17](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.16...v1.0.17) (2021-06-25)
 
 
