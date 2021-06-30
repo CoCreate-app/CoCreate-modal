@@ -1,11 +1,13 @@
 # CoCreate-modal
 
-A draggable, customizable Pop up that toggle hiddent content  via attributes. Great for multitasking and showing multiple views. Take it for a spin in our [playground!](https://cocreate.app/docs/modal)
+A draggable, movable and resizable modal. customizable via attributes, great for popups, alerts, multitasking and displaying multiple views. Take it for a spin in our [playground!](https://cocreate.app/docs/modal)
 
-![GitHub file size in bytes](https://img.shields.io/github/size/CoCreate-app/CoCreate-modal/dist/CoCreate-modal.min.js?label=minified%20size&style=for-the-badge)
-![GitHub latest release](https://img.shields.io/github/v/release/CoCreate-app/CoCreate-modal?style=for-the-badge)
-![GitHub](https://img.shields.io/github/license/CoCreate-app/CoCreate-modal?style=for-the-badge)
-![GitHub labels](https://img.shields.io/github/labels/CoCreate-app/CoCreate-modal/help%20wanted?style=for-the-badge)
+![minified](https://img.badgesize.io/https://cdn.cocreate.app/modal/latest/CoCreate-modal.min.js?style=flat-square&label=minified&color=orange)
+![gzip](https://img.badgesize.io/https://cdn.cocreate.app/modal/latest/CoCreate-modal.min.js?compression=gzip&style=flat-square&label=gzip&color=yellow)
+![brotli](https://img.badgesize.io/https://cdn.cocreate.app/modal/latest/CoCreate-modal.min.js?compression=brotli&style=flat-square&label=brotli)
+![GitHub latest release](https://img.shields.io/github/v/release/CoCreate-app/CoCreate-modal?style=flat-square)
+![License](https://img.shields.io/github/license/CoCreate-app/CoCreate-modal?style=flat-square)
+![Hiring](https://img.shields.io/static/v1?style=flat-square&label=&message=Hiring&color=blueviolet)
 
 ![CoCreate-modal](https://cdn.cocreate.app/docs/CoCreate-modal.gif)
 
@@ -27,6 +29,12 @@ For a complete guide and working demo refer to the [doumentation](https://cocrea
 
 ```shell
 $ npm i @cocreate/modal
+```
+
+## yarn
+
+```shell
+$ yarn install @cocreate/modal
 ```
 
 # Table of Contents
