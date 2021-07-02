@@ -148,7 +148,7 @@ Modal.prototype = {
         iframe.setAttribute('data-pass_id', attributes['data-pass_to']);
         iframe.setAttribute('data-collection', "");
         iframe.setAttribute('data-document_id', "");
-        iframe.setAttribute('data-request_id', uuid.generate());
+        // iframe.setAttribute('data-request_id', uuid.generate());
       }
       if (attributes['data-pass_name']) {
         iframe.setAttribute('name', attributes['data-pass_name']);
