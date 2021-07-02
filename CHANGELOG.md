@@ -1,3 +1,10 @@
+## [1.0.20](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.19...v1.0.20) (2021-07-02)
+
+
+### Bug Fixes
+
+* remove data-request_id ([58419db](https://github.com/CoCreate-app/CoCreate-modal/commit/58419db271e5a6dbe9421eb3aee6edf037ce6e13))
+
 ## [1.0.19](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.18...v1.0.19) (2021-06-30)
 
 
