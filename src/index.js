@@ -162,7 +162,7 @@ CoCreateWindow.prototype = {
   openWindow: function(aTag) {
     
     var attr = {
-      url:    aTag.getAttribute('href'),
+      url:    aTag.href,
       x:      aTag.getAttribute('data-modal_x'),
       y:      aTag.getAttribute('data-modal_y'),
       width:  aTag.getAttribute('data-modal_width'),
