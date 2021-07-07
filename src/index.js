@@ -169,7 +169,7 @@ CoCreateWindow.prototype = {
       height: aTag.getAttribute('data-modal_height'),
       ajax:   aTag.getAttribute('data-modal_ajax'),
       color:  aTag.getAttribute('data-modal_color'),
-      header: aTag.getAttribute('data-modal_header') ? aTag.getAttribute('data-modal_header'): "true", 
+      header: aTag.getAttribute('data-modal_header'), 
       
       attributes: utils.getAttributes(aTag)
     }
