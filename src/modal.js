@@ -8,10 +8,10 @@ function Modal(el, options, container) {
   
   /** define constant **/	
 	this.MARGIN = 5;
-	this.FULLSCREEN_MARGIN = -20;
-	this.NO_SNAP = -31;
+	this.FULLSCREEN_MARGIN = -60;
+	this.NO_SNAP = -100;
 	this.SNAP_MARGIN = -10;
-	
+
 	this.RIGHT_SCROL = 5;
 	
 // 	if (window.mobilecheck()) {
