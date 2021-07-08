@@ -96,7 +96,7 @@ Modal.prototype = {
     if (width && width != "") {
       this.el.style.width = width;
     } else {
-      this.el.style.width = "600px";
+      this.el.style.width = "100%";
     }
     if (height && height != "") {
       this.el.style.height = height;
