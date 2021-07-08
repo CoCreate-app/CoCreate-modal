@@ -1,3 +1,12 @@
+## [1.0.22](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.21...v1.0.22) (2021-07-08)
+
+
+### Bug Fixes
+
+* default width ([2b67a14](https://github.com/CoCreate-app/CoCreate-modal/commit/2b67a148cdfde82b0535173036a0c7f48e69b93d))
+* make header default false ([7ec2a9c](https://github.com/CoCreate-app/CoCreate-modal/commit/7ec2a9cdf78b449010137f56edff58bc445252f1))
+* snap thresholds ([ef5dafe](https://github.com/CoCreate-app/CoCreate-modal/commit/ef5dafe0ab54c8ef73cd2c6181db8763705e3dd3))
+
 ## [1.0.21](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.20...v1.0.21) (2021-07-07)
 
 
