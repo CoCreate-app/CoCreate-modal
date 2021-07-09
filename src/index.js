@@ -180,29 +180,25 @@ CoCreateWindow.prototype = {
     ModalStorage.rootPageId = this.rootId;
     
     var open_id = open_type;
-    // if (this.isRoot) {
-    //   ModalStorage.parentPageId = this.pageId;
-    // } else {
-      switch (open_type) {
-        case 'parent':
-          open_id = this.parentId;
-          break;
-        case 'page':
-          open_id = this.pageId;
-          break;
-        case 'root':
-          open_id = this.rootId;
-          break;
-        default:
-          open_id = open_type;
-          break;
-          // code
-      }
+    switch (open_type) {
+      case 'parent':
+        open_id = this.parentId;
+        break;
+      case 'page':
+        open_id = this.pageId;
+        break;
+      case 'root':
+        open_id = this.rootId;
+        break;
+      default:
+        open_id = open_type;
+        break;
+        // code
+    }
     ModalStorage.parentPageId = open_id;
     
     attr.parentId = open_id;
-    // }
-    
+
     if (this.isRoot) {
       if (this._createContainer()) {
         this.container._createModal(attr);  

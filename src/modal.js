@@ -1,5 +1,10 @@
 import uuid from '@cocreate/uuid'
-
+import { 
+  getPointInfo, 
+  getRectInfo, 
+  setBound, 
+  getBoundStatus,
+} from './utils.js'
 
 function Modal(el, options, container) {
   if (!(el && el.nodeType && el.nodeType === 1)) {
@@ -372,7 +377,7 @@ Modal.prototype = {
       }
 
       if (snap_info && !this.isSnap) {
-        this.__setBound(this.el, snap_info.x, snap_info.y, snap_info.w, snap_info.h);
+        setBound(this.el, snap_info.x, snap_info.y, snap_info.w, snap_info.h);
         this.preSnapped = {x: this.rect.x, y: this.rect.y, width: this.rect.width, height: this.rect.height};
         this.isSnap = true;
       } 
@@ -398,51 +403,10 @@ Modal.prototype = {
     this.clickedInfo = null;
   },
   
-  __setBound : function(el, x, y, w, h) {
-    var borderHeight = this.el.offsetHeight - this.el.clientHeight;
-    var borderWidth = this.el.offsetWidth - this.el.clientWidth;
-    el.style.left = x;
-    el.style.top = y;
-    // el.style.width = "calc( " + w + " - " + borderWidth + "px )";
-    // el.style.height = "calc( "  + h + " - " + borderHeight + "px )";
-    el.style.width = w;
-    el.style.height = h;
-  },
-  
-  __setRectInfo: function() {
-    let bound = this.el.getBoundingClientRect();
-    let parentRect = this.el.parentNode.getBoundingClientRect();
-    this.rect = {};
-    this.rect.x = bound.x - parentRect.x;
-    this.rect.y = bound.y - parentRect.y;
-    this.rect.width = bound.width;
-    this.rect.height = bound.height;
-    this.rect.top = bound.top - parentRect.top;
-    this.rect.bottom = bound.bottom - parentRect.top;
-    this.rect.left = bound.left - parentRect.left;
-    this.rect.right = bound.right - parentRect.left;
-  },
-  
   __getBoundStatus : function(e) {
-    let bound = this.el.getBoundingClientRect();
-    let parentRect = this.el.parentNode.getBoundingClientRect();
-    let x = e.clientX - bound.left;// - parentRect.left;
-    let y = e.clientY - bound.top;// - parentRect.top;
-
-    this.__setRectInfo();
-
-    this.point.x = x;
-    this.point.y = y;
-    this.point.cx = e.clientX - parentRect.left;
-    this.point.cy = e.clientY - parentRect.top;
-
-    this.boundStatus = {
-      isTop : y < this.MARGIN && y > -this.MARGIN,
-      isLeft : x < this.MARGIN && x > -this.MARGIN,
-      isRight : x >= bound.width - this.RIGHT_SCROL && x <= bound.width + this.MARGIN + (this.MARGIN - this.RIGHT_SCROL),
-      isBottom: y >= bound.height - this.MARGIN && y <= bound.height + this.MARGIN
-    }
-    
+    this.point = getPointInfo(this.el, e)
+    this.rect = getRectInfo(this.el)
+    this.boundStatus = getBoundStatus(this.el, e)
     return this.boundStatus;
   },
   
@@ -561,7 +525,7 @@ Modal.prototype = {
     if (!this.isSnap) {
       this.isSnap = true;
       this.preSnapped = {x: this.rect.x, y: this.rect.y, width: this.rect.width, height: this.rect.height};
-      this.__setBound(this.el, 0, 0, "100%", "100%");
+      setBound(this.el, 0, 0, "100%", "100%");
     } else {
       this.isSnap = false;
       this.el.style.left = this.preSnapped.x + 'px';
@@ -673,8 +637,8 @@ Modal.prototype = {
       }
       this.el.style.height = this._setDimension(Math.min(el_height, height));
     }
-
-    this.__setRectInfo()
+    
+    this.rect = getRectInfo(this.el)
   },
   
   _setDimension: function(data, isPercent) {
