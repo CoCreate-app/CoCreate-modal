@@ -1,3 +1,11 @@
+## [1.0.24](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.23...v1.0.24) (2021-07-13)
+
+
+### Bug Fixes
+
+* add yarn lockfile to git ignore ([471bcdc](https://github.com/CoCreate-app/CoCreate-modal/commit/471bcdc2c7b19edd9e5839706c8f8647f5cca4fb))
+* remove yarn.lock ([816fb55](https://github.com/CoCreate-app/CoCreate-modal/commit/816fb551fcddd837ea5edaa46c5228f6ace53690))
+
 ## [1.0.23](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.22...v1.0.23) (2021-07-13)
 
 
