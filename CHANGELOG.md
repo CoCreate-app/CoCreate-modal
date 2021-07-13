@@ -1,3 +1,11 @@
+## [1.0.23](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.22...v1.0.23) (2021-07-13)
+
+
+### Bug Fixes
+
+* gitignore all logs ([f83cca8](https://github.com/CoCreate-app/CoCreate-modal/commit/f83cca8f6ec540f74436d38652adf0d4d347f34c))
+* movable bug ([c6afd5f](https://github.com/CoCreate-app/CoCreate-modal/commit/c6afd5f8242b67027f78cf2ca4dc7a80545d93e7))
+
 ## [1.0.22](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.21...v1.0.22) (2021-07-08)
 
 
