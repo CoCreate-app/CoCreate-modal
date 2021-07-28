@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.26...v1.1.0) (2021-07-28)
+
+
+### Features
+
+* add new is{attribute} system and remove data- from attributtes ([6d16642](https://github.com/CoCreate-app/CoCreate-modal/commit/6d1664290e5b1c81bc6e3167f00720a4e3737744))
+
 ## [1.0.26](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.0.25...v1.0.26) (2021-07-17)
 
 
