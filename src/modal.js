@@ -146,8 +146,8 @@ Modal.prototype = {
       iframe = this.__createContainer(this.headerArea, attributes['data-modal_iframe'] === "false" ? "div" : "iframe");
       if (attributes['data-pass_to']) {
         iframe.setAttribute('data-pass_id', attributes['data-pass_to']);
-        iframe.setAttribute('data-collection', "");
-        iframe.setAttribute('data-document_id', "");
+        iframe.setAttribute('collection', "");
+        iframe.setAttribute('document_id', "");
         // iframe.setAttribute('data-request_id', uuid.generate());
       }
       if (attributes['data-pass_name']) {
