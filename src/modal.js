@@ -75,14 +75,14 @@ Modal.prototype = {
   _init : function() {
     var opt = this.options;
     
-    this.isAjax =   opt.ajax  ? opt.ajax    : this.el.getAttribute("data-modal_ajax")
+    this.isAjax =   opt.ajax  ? opt.ajax    : this.el.getAttribute("modal-ajax")
     var windowURL = opt.url   ? opt.url     : this.el.getAttribute("href");
-    var width =     opt.width ? opt.width   : this.el.getAttribute("data-modal_width");
-    var height =    opt.height? opt.height  : this.el.getAttribute("data-modal_height");
-    var color =     opt.color ? opt.color   : this.el.getAttribute("data-modal_color");
-    var x =         opt.x     ? opt.x       : this.el.getAttribute("data-modal_x")
-    var y =         opt.y     ? opt.y       : this.el.getAttribute("data-modal_y")
-    var showHeader= opt.header? opt.header  : this.el.getAttribute("data-modal_header")
+    var width =     opt.width ? opt.width   : this.el.getAttribute("modal-width");
+    var height =    opt.height? opt.height  : this.el.getAttribute("modal-height");
+    var color =     opt.color ? opt.color   : this.el.getAttribute("modal-color");
+    var x =         opt.x     ? opt.x       : this.el.getAttribute("modal-x")
+    var y =         opt.y     ? opt.y       : this.el.getAttribute("modal-y")
+    var showHeader= opt.header? opt.header  : this.el.getAttribute("modal-header")
     
     var attributes = opt.attributes;
     
@@ -143,15 +143,15 @@ Modal.prototype = {
       iframe = this.__createContainer(this.headerArea);
       iframe.src = windowURL;
     } else if (attributes) {
-      iframe = this.__createContainer(this.headerArea, attributes['data-modal_iframe'] === "false" ? "div" : "iframe");
-      if (attributes['data-pass_to']) {
-        iframe.setAttribute('data-pass_id', attributes['data-pass_to']);
+      iframe = this.__createContainer(this.headerArea, attributes['modal-iframe'] === "false" ? "div" : "iframe");
+      if (attributes['pass_to']) {
+        iframe.setAttribute('pass_id', attributes['pass_to']);
         iframe.setAttribute('collection', "");
         iframe.setAttribute('document_id', "");
         // iframe.setAttribute('data-request_id', uuid.generate());
       }
-      if (attributes['data-pass_name']) {
-        iframe.setAttribute('name', attributes['data-pass_name']);
+      if (attributes['pass-name']) {
+        iframe.setAttribute('name', attributes['pass-name']);
       }
     } else {
       return;

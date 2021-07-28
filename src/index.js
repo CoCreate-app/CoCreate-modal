@@ -163,18 +163,18 @@ CoCreateWindow.prototype = {
     
     var attr = {
       url:    aTag.href,
-      x:      aTag.getAttribute('data-modal_x'),
-      y:      aTag.getAttribute('data-modal_y'),
-      width:  aTag.getAttribute('data-modal_width'),
-      height: aTag.getAttribute('data-modal_height'),
-      ajax:   aTag.getAttribute('data-modal_ajax'),
-      color:  aTag.getAttribute('data-modal_color'),
-      header: aTag.getAttribute('data-modal_header'), 
+      x:      aTag.getAttribute('modal-x'),
+      y:      aTag.getAttribute('modal-y'),
+      width:  aTag.getAttribute('modal-width'),
+      height: aTag.getAttribute('modal-height'),
+      ajax:   aTag.getAttribute('modal-ajax'),
+      color:  aTag.getAttribute('modal-color'),
+      header: aTag.getAttribute('modal-header'), 
       
       attributes: utils.getAttributes(aTag)
     }
     
-    var open_type = aTag.getAttribute('data-modal_open');
+    var open_type = aTag.getAttribute('modal-open');
     open_type = open_type ? open_type : 'root';
     
     ModalStorage.rootPageId = this.rootId;
