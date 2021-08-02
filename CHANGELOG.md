@@ -1,3 +1,11 @@
+## [1.1.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.1...v1.1.2) (2021-08-02)
+
+
+### Bug Fixes
+
+* remove data- from attributes ([84f2bfd](https://github.com/CoCreate-app/CoCreate-modal/commit/84f2bfd41d302c47e26f3ef9af1642df31106122))
+* update data-fullscreen to fullscreen ([1dd81dc](https://github.com/CoCreate-app/CoCreate-modal/commit/1dd81dc2b079fb4be16029f3bf3ff9ce97122322))
+
 ## [1.1.1](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.0...v1.1.1) (2021-07-28)
 
 
