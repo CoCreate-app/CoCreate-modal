@@ -1,3 +1,10 @@
+## [1.1.4](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.3...v1.1.4) (2021-08-18)
+
+
+### Bug Fixes
+
+* passive event handlers ([082e16c](https://github.com/CoCreate-app/CoCreate-modal/commit/082e16ce5a230a15abdba25dd21ba631ce7662e6))
+
 ## [1.1.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.2...v1.1.3) (2021-08-14)
 
 
