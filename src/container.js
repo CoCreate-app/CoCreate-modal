@@ -70,14 +70,14 @@ ModalContainer.prototype = {
       if (_this.selectedModal) {
       _this.selectedModal._onMove(e.touches[0]);
       }
-    }, { passive: false })
+    }, { passive: false });
     
     this.el.addEventListener('touchend', function(e) {
       // e.preventDefault();
       if (_this.selectedModal) {
       _this.selectedModal._onUp(e.touches[0]);
       }
-    }, { passive: false })
+    }, { passive: false });
     
     this.el.addEventListener('cocreate-selectmodal', function(e) {
       if (_this.selectedModal) {
@@ -109,7 +109,7 @@ ModalContainer.prototype = {
       _this._resizeProcess(_this.width, _this.height, contentRect.width, contentRect.height);
     })
     
-    ro.observe(this.el)
+    ro.observe(this.el);
   },
   
   _resizeProcess(prevWidth, prevHeight, width, height) {
