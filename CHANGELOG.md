@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.4...v1.1.5) (2021-08-21)
+
+
+### Bug Fixes
+
+* update attribute name test-parent_id and test-page_id tp parent_id and page_id ([6eaae2e](https://github.com/CoCreate-app/CoCreate-modal/commit/6eaae2e6c051f119e06133b39bcefe1128c6f4d4))
+
 ## [1.1.4](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.3...v1.1.4) (2021-08-18)
 
 
