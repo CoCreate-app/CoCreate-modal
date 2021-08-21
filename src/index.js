@@ -33,8 +33,8 @@ function CoCreateWindow(id) {
   //. set parent_id and page_id for test 
   
   var html = document.querySelector("html");
-  html.setAttribute("test-parent_id", this.parentId);
-  html.setAttribute("test-page_id", this.pageId);
+  html.setAttribute("parent_id", this.parentId);
+  html.setAttribute("page_id", this.pageId);
 }
 
 CoCreateWindow.prototype = {
