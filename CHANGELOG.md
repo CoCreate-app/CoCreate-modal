@@ -1,3 +1,10 @@
+## [1.1.8](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.7...v1.1.8) (2021-08-22)
+
+
+### Bug Fixes
+
+* removed data- from main-content, clone, filter-value_type ([7cbe041](https://github.com/CoCreate-app/CoCreate-modal/commit/7cbe041ddfd2c7d4bcc276219ba1bd576754a971))
+
 ## [1.1.7](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.6...v1.1.7) (2021-08-22)
 
 
