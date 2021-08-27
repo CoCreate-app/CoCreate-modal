@@ -1,3 +1,10 @@
+## [1.1.10](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.9...v1.1.10) (2021-08-27)
+
+
+### Bug Fixes
+
+* commented console.logs producing useless logs ([5414151](https://github.com/CoCreate-app/CoCreate-modal/commit/54141514a57ec47484dc6f97ea9754b3ffbd44c1))
+
 ## [1.1.9](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.8...v1.1.9) (2021-08-23)
 
 
