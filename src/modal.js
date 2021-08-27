@@ -588,7 +588,7 @@ Modal.prototype = {
   
   //. setParent Event
   setContainerEvent(status) {
-    console.log(status)
+    // console.log(status)
     if (!this.container) return;
     if (status != 'default') {
       
@@ -603,7 +603,7 @@ Modal.prototype = {
     if (this.isHeader) {
       width -= 120;
     }
-    return this.point.x > 0 && this.point.x < width && this.point.y > 0 && this.point.y < 50
+    return this.point.x > 0 && this.point.x < width && this.point.y > 0 && this.point.y < 50;
   },
   
   /**
