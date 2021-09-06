@@ -1,3 +1,10 @@
+## [1.1.14](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.13...v1.1.14) (2021-09-06)
+
+
+### Bug Fixes
+
+* remove console.log ([26587f4](https://github.com/CoCreate-app/CoCreate-modal/commit/26587f41b4dd946d34b278278ed45c185064a40a))
+
 ## [1.1.13](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.12...v1.1.13) (2021-09-04)
 
 
