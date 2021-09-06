@@ -182,7 +182,7 @@ Modal.prototype = {
     
     if (this.iframe) {
       this.iframe.addEventListener('load', function() {
-        console.log(self.iframe.contentDocument);
+        // console.log(self.iframe.contentDocument);
         const iframeContent = self.iframe.contentDocument;
         const nav = iframeContent.querySelector('.nav');
         
