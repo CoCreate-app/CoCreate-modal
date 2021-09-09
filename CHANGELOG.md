@@ -1,3 +1,10 @@
+## [1.1.16](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.15...v1.1.16) (2021-09-09)
+
+
+### Bug Fixes
+
+* CoCreate.config directory, path, name and  public ([988f19a](https://github.com/CoCreate-app/CoCreate-modal/commit/988f19a3ddebdbc9df05e64ae22de63f4c150b53))
+
 ## [1.1.15](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.14...v1.1.15) (2021-09-08)
 
 
