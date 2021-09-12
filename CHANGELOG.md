@@ -1,3 +1,10 @@
+## [1.1.20](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.19...v1.1.20) (2021-09-12)
+
+
+### Bug Fixes
+
+* update sidenav to use resize and toggle ([1a93d98](https://github.com/CoCreate-app/CoCreate-modal/commit/1a93d989254035f78274f1569be253341152578a))
+
 ## [1.1.19](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.18...v1.1.19) (2021-09-09)
 
 
