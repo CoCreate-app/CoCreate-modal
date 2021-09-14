@@ -1,3 +1,10 @@
+## [1.1.22](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.21...v1.1.22) (2021-09-14)
+
+
+### Bug Fixes
+
+* add cocreate.app to domains ([b81b24a](https://github.com/CoCreate-app/CoCreate-modal/commit/b81b24a06775adeb6339077439da6ed47df5f0eb))
+
 ## [1.1.21](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.20...v1.1.21) (2021-09-13)
 
 
