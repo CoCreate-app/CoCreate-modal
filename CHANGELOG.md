@@ -1,3 +1,10 @@
+## [1.1.35](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.34...v1.1.35) (2021-10-16)
+
+
+### Bug Fixes
+
+* update socket package to fix bug in docs ([c51a26c](https://github.com/CoCreate-app/CoCreate-modal/commit/c51a26c99600fbcd0b75d7c9da03908577f9e632))
+
 ## [1.1.34](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.33...v1.1.34) (2021-10-15)
 
 
