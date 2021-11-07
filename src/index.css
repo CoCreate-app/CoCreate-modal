@@ -2,6 +2,7 @@
 	/*position: relative;*/
 	z-index: 8;
 	height: -moz-available;   
+	height: calc(100vh - 50px);   
   height: -webkit-fill-available;  
   height: fill-available;
   width: -moz-available;   
@@ -13,6 +14,7 @@
 
 .hide-nav + #modal-viewport{
 	margin-top:0px;
+	height: 100vh;   
 	max-height: -moz-available;   
   max-height: -webkit-fill-available;  
   max-height: fill-available;
