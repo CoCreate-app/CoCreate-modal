@@ -1,3 +1,10 @@
+## [1.1.43](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.42...v1.1.43) (2021-11-07)
+
+
+### Bug Fixes
+
+* height in firefox ([5be774d](https://github.com/CoCreate-app/CoCreate-modal/commit/5be774d01ea7d74293f4755d932c473599750875))
+
 ## [1.1.42](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.41...v1.1.42) (2021-11-06)
 
 
