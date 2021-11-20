@@ -1,3 +1,10 @@
+## [1.1.49](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.48...v1.1.49) (2021-11-20)
+
+
+### Bug Fixes
+
+* update dependencies ([91de81f](https://github.com/CoCreate-app/CoCreate-modal/commit/91de81f14c353f29fa199dbfd7dfe044d0d780df))
+
 ## [1.1.48](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.47...v1.1.48) (2021-11-19)
 
 
