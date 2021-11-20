@@ -1,3 +1,10 @@
+## [1.1.50](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.49...v1.1.50) (2021-11-20)
+
+
+### Bug Fixes
+
+* remove cdn.CoCreate.min.css ([234f918](https://github.com/CoCreate-app/CoCreate-modal/commit/234f9187149ff8d4ef55fe520d5d53ccaa5734e8))
+
 ## [1.1.49](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.48...v1.1.49) (2021-11-20)
 
 
