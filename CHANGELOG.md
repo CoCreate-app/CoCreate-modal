@@ -1,3 +1,11 @@
+## [1.1.53](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.52...v1.1.53) (2021-11-26)
+
+
+### Bug Fixes
+
+* docs sidenav width ([3eff059](https://github.com/CoCreate-app/CoCreate-modal/commit/3eff05974bbd9da387cd37922182cc8bffb9d70b))
+* updated action dependency to actions ([0a356fc](https://github.com/CoCreate-app/CoCreate-modal/commit/0a356fcc6107fc66fe82dc0cac79380597f19bf5))
+
 ## [1.1.52](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.51...v1.1.52) (2021-11-26)
 
 
