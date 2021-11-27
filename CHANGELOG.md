@@ -1,3 +1,10 @@
+## [1.1.54](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.53...v1.1.54) (2021-11-27)
+
+
+### Bug Fixes
+
+* update docs api and cocreateJS script ([1be69f6](https://github.com/CoCreate-app/CoCreate-modal/commit/1be69f6ec998a2011f96c41c12d026d32799545a))
+
 ## [1.1.53](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.52...v1.1.53) (2021-11-26)
 
 
