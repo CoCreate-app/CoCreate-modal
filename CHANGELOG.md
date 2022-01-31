@@ -1,3 +1,10 @@
+## [1.1.60](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.59...v1.1.60) (2022-01-31)
+
+
+### Bug Fixes
+
+* url from element.href || element.getAttribute('href') ([ca43996](https://github.com/CoCreate-app/CoCreate-modal/commit/ca43996051034304a33ce49f9cc95cb044521425))
+
 ## [1.1.59](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.58...v1.1.59) (2022-01-01)
 
 
