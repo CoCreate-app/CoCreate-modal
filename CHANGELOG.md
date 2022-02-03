@@ -1,3 +1,10 @@
+## [1.1.62](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.61...v1.1.62) (2022-02-03)
+
+
+### Bug Fixes
+
+* replaced show and hide class hidden with attribute hidden ([9fd35da](https://github.com/CoCreate-app/CoCreate-modal/commit/9fd35da60ef7ebae455789b2fcfc501e95264cd7))
+
 ## [1.1.61](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.60...v1.1.61) (2022-02-01)
 
 
