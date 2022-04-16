@@ -1,3 +1,10 @@
+## [1.1.67](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.66...v1.1.67) (2022-04-16)
+
+
+### Bug Fixes
+
+* update message to use data instead of emit ([119eb9e](https://github.com/CoCreate-app/CoCreate-modal/commit/119eb9e3f4c869c7cb0483d5b6eb69d9bf9caf2b))
+
 ## [1.1.66](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.65...v1.1.66) (2022-02-24)
 
 
