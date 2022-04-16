@@ -100,17 +100,13 @@ CoCreateWindow.prototype = {
   sendWindowBtnEvent: function(type) {
     var json = {
       apiKey: config.apiKey,
-      securityKey: config.securityKey,
       organization_id: config.organization_Id,
       broadcast_sender: true,
-      "emit": {
-        message: 'windowBtnEvent',
-        data: {
-          "parentId": this.parentId,
-          "pageId": this.pageId,
-          "type": type,
-          "author": "jin"
-        }
+      message: 'windowBtnEvent',
+      data: {
+        "parentId": this.parentId,
+        "pageId": this.pageId,
+        "type": type
       }
     }
 
@@ -119,7 +115,8 @@ CoCreateWindow.prototype = {
   
   _initSocket: function() {
     var _this = this;
-    message.listen('openWindow', function(data) {
+    message.listen('openWindow', function(response) {
+      let data = response.data;
       if (data.parentId == _this.pageId) {
         _this.container._createModal(data);
       }
@@ -128,7 +125,8 @@ CoCreateWindow.prototype = {
       // }
     }),
     
-    message.listen('windowBtnEvent', function(data) {
+    message.listen('windowBtnEvent', function(response) {
+      let data = response.data;
       if (data.parentId == _this.pageId) {
         
         var pageId = data.pageId;
@@ -210,13 +208,10 @@ CoCreateWindow.prototype = {
     } else {
       message.send({
         apiKey: config.apiKey,
-        securityKey: config.securityKey,
         organization_id: config.organization_Id,
         broadcast_sender: true,
-        "emit": {
-          message: 'openWindow',
-          data: attr
-        }
+        message: 'openWindow',
+        data: attr
       });
     }
   },
