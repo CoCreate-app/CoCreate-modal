@@ -1,3 +1,10 @@
+## [1.1.68](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.67...v1.1.68) (2022-05-06)
+
+
+### Bug Fixes
+
+* update config organization_Id to organization_id ([125def1](https://github.com/CoCreate-app/CoCreate-modal/commit/125def1c45b1e9c0a5c648cb279bad8a83a592d4))
+
 ## [1.1.67](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.66...v1.1.67) (2022-04-16)
 
 
