@@ -1,3 +1,10 @@
+## [1.1.69](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.68...v1.1.69) (2022-05-19)
+
+
+### Bug Fixes
+
+* update document_id on link index.css ([cbd076a](https://github.com/CoCreate-app/CoCreate-modal/commit/cbd076a3cb88a6866a15db64d33d7bd3e951e3b9))
+
 ## [1.1.68](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.67...v1.1.68) (2022-05-06)
 
 
