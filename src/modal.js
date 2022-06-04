@@ -143,7 +143,7 @@ Modal.prototype = {
       iframe = this.__createContainer(this.headerArea);
       iframe.src = windowURL;
     } else if (attributes) {
-      iframe = this.__createContainer(this.headerArea, attributes['modal-iframe'] === "false" ? "div" : "iframe");
+      iframe = this.__createContainer(this.headerArea, "div");
       if (attributes['pass_to']) {
         iframe.setAttribute('pass_id', attributes['pass_to']);
         iframe.setAttribute('collection', "");
@@ -152,6 +152,9 @@ Modal.prototype = {
       }
       if (attributes['pass-name']) {
         iframe.setAttribute('name', attributes['pass-name']);
+      }
+      if (attributes['pass-src']) {
+        iframe.setAttribute('src', attributes['pass-src']);
       }
     } else {
       return;
