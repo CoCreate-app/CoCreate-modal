@@ -1,3 +1,10 @@
+## [1.1.71](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.70...v1.1.71) (2022-06-07)
+
+
+### Bug Fixes
+
+* if href add iframe else add div and pass-src ([20c007a](https://github.com/CoCreate-app/CoCreate-modal/commit/20c007ad6d84944c9e8506c7df08944a29d6d304))
+
 ## [1.1.70](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.69...v1.1.70) (2022-05-23)
 
 
