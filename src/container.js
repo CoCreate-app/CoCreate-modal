@@ -1,4 +1,3 @@
-
 import Modal from "./modal.js"
 
 function ModalContainer(el) {
@@ -35,6 +34,7 @@ ModalContainer.prototype = {
     this.el.appendChild(node);
     this.ghostEl = node;
   },
+
   _initModals : function() {
     var el_children = document.querySelectorAll("." + this.modalClass);
     
@@ -44,7 +44,6 @@ ModalContainer.prototype = {
     
     if (!this.selectedModal) {
       this._selectModal(this.modals[this.modals.length - 1]);
-      
     }
   },
   
@@ -96,38 +95,8 @@ ModalContainer.prototype = {
         _this._removeModal(e.detail.modal)
       }
     })
-    this._initResizeEvent()
   },
   
-  _initResizeEvent: function() {
-    var _this = this;
-    var bound = this.el.getBoundingClientRect();
-    this.width = bound.width;
-    this.height = bound.height;
-    let ro = new ResizeObserver((entries, observer) => {
-      let contentRect = entries[0].contentRect;
-      _this._resizeProcess(_this.width, _this.height, contentRect.width, contentRect.height);
-    })
-    
-    ro.observe(this.el);
-  },
-  
-  _resizeProcess(prevWidth, prevHeight, width, height) {
-    this.width = width;
-    this.height = height;
-
-    if (prevWidth == width && prevHeight == height) {
-      return;
-    }
-    
-    let dx = width - prevWidth;
-    let dy = height - prevHeight;
-    
-    for (var  i = 0; i < this.modals.length; i++) {
-      this.modals[i].resize(dx, dy, width, height);
-    }
-    
-  },
   
   _createModal : function(attr) {
     var node = document.createElement("div");
@@ -137,9 +106,10 @@ ModalContainer.prototype = {
     this.el.appendChild(node)
     
     var modal = new Modal(node, attr, this.el);
-    this.modals.push(modal)
+    this.modals.push(modal)  
     
     this._selectModal(node);
+    return modal
   },
   
   _releaseSelect: function() {

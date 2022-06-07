@@ -96,38 +96,8 @@
   top: 0;
   right: 0;
   height: 20px;
+  cursor: move;
 }
-
-.modal-drag-area-left {
-  position: absolute;
-  background-color: transparent;
-  z-index: 10;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 10px;
-}
-
-.modal-drag-area-right {
-  position: absolute;
-  background-color: transparent;
-  z-index: 10;
-  right: 0px;
-  top: 0;
-  bottom: 0;
-  width: 10px;
-}
-
-.modal-drag-area-bottom {
-  position: absolute;
-  background-color: transparent;
-  z-index: 10;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 10px;
-}
-
 
 .modal-parked {
   width: 50px !important;

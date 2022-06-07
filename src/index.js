@@ -1,6 +1,7 @@
 import ModalContainer from "./container.js"
 import { ModalStorage } from "./utils.js"
 import uuid from '@cocreate/uuid'
+import action from '@cocreate/actions';
 import observer from '@cocreate/observer';
 import utils from '@cocreate/utils';
 import message from '@cocreate/message-client';
@@ -13,7 +14,7 @@ function CoCreateWindow(id) {
   
   this.pageId = uuid.generate();
   this.isRoot = this._checkRoot();
-  
+  this.document = document;
   
   if (!this.isRoot) {
     this.parentId = ModalStorage.parentPageId;
@@ -26,7 +27,6 @@ function CoCreateWindow(id) {
   }
   
   this._createContainer();
-  this._initWndButtons();
   
   this._initSocket();
   
@@ -35,6 +35,31 @@ function CoCreateWindow(id) {
   var html = document.querySelector("html");
   html.setAttribute("parent_id", this.parentId);
   html.setAttribute("page_id", this.pageId);
+
+  action.init({
+    name: "closeModal",
+    endEvent: "closeModal",
+    callback: (btn, data) => {
+      this.sendWindowBtn(btn, 'close');
+    },
+  });
+
+  action.init({
+    name: "minMaxModal",
+    endEvent: "minMaxModal",
+    callback: (btn, data) => {
+      this.sendWindowBtn(btn, 'maximize');
+    },
+  });
+
+  action.init({
+    name: "parkModal",
+    endEvent: "parkModal",
+    callback: (btn, data) => {
+      this.sendWindowBtn(btn, 'park');
+    },
+  });
+  
 }
 
 CoCreateWindow.prototype = {
@@ -45,6 +70,7 @@ CoCreateWindow.prototype = {
         return false;
     }
   },
+
   _createContainer: function() {
     if (this.container) return true;
 
@@ -56,48 +82,14 @@ CoCreateWindow.prototype = {
       return false;
     }
   },
-
-  _initWndButtons: function() {
-    var closeBtns = document.querySelectorAll('.btn-modal-close');
-    var minmaxBtn = document.querySelector('.btn-modal-maximize');
-    var parkBtn = document.querySelector('.btn-modal-minimize');
-    var _this = this;
-    
-    if (closeBtns.length > 0) {
-      for (var i=0; i < closeBtns.length; i++) {
-        var closeBtn = closeBtns[i];
-        closeBtn.addEventListener('click', function(e) {
-          e.preventDefault();
-          _this.sendWindowBtnEvent('close');
-        })  
-      }
-    }
-    
-    if (minmaxBtn) {
-      minmaxBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        _this.sendWindowBtnEvent('maximize');
-        // let state = this.getAttribute('data-state');
-        
-        // if (state == 'min') {
-        //   _this.sendWindowBtnEvent('minimize');
-        //   this.setAttribute('data-state', 'max');
-        // } else {
-        //   _this.sendWindowBtnEvent('maximize');
-        //   this.setAttribute('data-state', 'min');
-        // }
-      })
-    }
-    
-    if (parkBtn) {
-      parkBtn.addEventListener('click', function(e) {
-        e.preventDefault();
-        _this.sendWindowBtnEvent('park');
-      })
-    }
-  },
   
-  sendWindowBtnEvent: function(type) {
+  sendWindowBtn: function(btn, type) {
+    let modalEl = btn.closest('.modal')
+    let modal = this.container.getModalById(modalEl && modalEl.id || this.pageId)
+    this.sendWindowBtnEvent(type, modal)
+  },
+
+  sendWindowBtnEvent: function(type, modal) {
     var json = {
       apiKey: config.apiKey,
       organization_id: config.organization_id,
@@ -106,11 +98,14 @@ CoCreateWindow.prototype = {
       data: {
         "parentId": this.parentId,
         "pageId": this.pageId,
+        "modal": modal,
         "type": type
       }
     }
-
-    message.send(json);
+    if (modal)
+      this.buttons(json.data)
+    else 
+      message.send(json);
   },
   
   _initSocket: function() {
@@ -120,37 +115,40 @@ CoCreateWindow.prototype = {
       if (data.parentId == _this.pageId) {
         _this.container._createModal(data);
       }
-      // if (data.parentId == _this.pageId) {
-      //   _this.container._createModal(data);
-      // }
     }),
     
     message.listen('windowBtnEvent', function(response) {
-      let data = response.data;
-      if (data.parentId == _this.pageId) {
-        
-        var pageId = data.pageId;
-        var type = data.type;
-        
-        var modal = _this.container.getModalById(pageId);
-        
-        if (modal) {
-          switch (type) {
-            case 'close':
-               _this.container._removeModal(modal)
-              break;
-            case 'maximize':
-              // minimizeWindow(w);
-              modal._setMaximize();
-              break;
-            case 'park':
-              modal.togglePark();
-              break;
-            default:
-          }          
-        }
-      }
+        _this.buttons(response.data)
     })
+  },
+
+  buttons: function(data) {
+    if (data.parentId == this.pageId) {
+        
+      var pageId = data.pageId;
+      var type = data.type;
+      var modal = data.modal
+
+      if (!modal)
+        modal = this.container.getModalById(pageId);
+      
+      if (modal) {
+        switch (type) {
+          case 'close':
+             this.container._removeModal(modal)
+            break;
+          case 'maximize':
+            // minimizeWindow(w);
+            modal.minMax();
+            break;
+          case 'park':
+            modal.togglePark();
+            break;
+          default:
+        }          
+      }
+    }
+
   },
   
   open: function(aTag) {
@@ -178,28 +176,25 @@ CoCreateWindow.prototype = {
     ModalStorage.rootPageId = this.rootId;
     
     var open_id = open_type;
-    // if (this.isRoot) {
-    //   ModalStorage.parentPageId = this.pageId;
-    // } else {
-      switch (open_type) {
-        case 'parent':
-          open_id = this.parentId;
-          break;
-        case 'page':
-          open_id = this.pageId;
-          break;
-        case 'root':
-          open_id = this.rootId;
-          break;
-        default:
-          open_id = open_type;
-          break;
-          // code
-      }
+    switch (open_type) {
+      case 'parent':
+        open_id = this.parentId;
+        break;
+      case 'page':
+        open_id = this.pageId;
+        break;
+      case 'root':
+        open_id = this.rootId;
+        break;
+      default:
+        open_id = open_type;
+        break;
+        // code
+    }
+
     ModalStorage.parentPageId = open_id;
     
     attr.parentId = open_id;
-    // }
     
     if (this.isRoot) {
       if (this._createContainer()) {
@@ -216,6 +211,7 @@ CoCreateWindow.prototype = {
     }
   },
 }
+
 
 let CoCreateModal = new CoCreateWindow();
 
