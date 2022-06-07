@@ -144,6 +144,8 @@ Modal.prototype = {
       iframe.src = windowURL;
     } else if (attributes) {
       iframe = this.__createContainer(this.headerArea, "div");
+      iframe.classList.add('overflow:auto')
+      iframe.classList.add('height:100vh')
       if (attributes['pass_to']) {
         iframe.setAttribute('pass_id', attributes['pass_to']);
         iframe.setAttribute('collection', "");
@@ -186,9 +188,7 @@ Modal.prototype = {
     if (this.iframe) {
       this.iframe.addEventListener('load', function() {
         // console.log(self.iframe.contentDocument);
-        const iframeContent = self.iframe.contentDocument;
-        const nav = iframeContent.querySelector('.nav');
-        
+        const iframeContent = self.iframe.contentDocument;        
         iframeContent.addEventListener('click', function() {
            var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: self}});
           self.el.parentNode.dispatchEvent(event);
@@ -208,20 +208,12 @@ Modal.prototype = {
       } 
     })
     
-    this.el.addEventListener('modal-resizing', function(e) {
-      console.log('resizing event trigger')
-    })
     this.el.addEventListener('touchstart', function(e) {
-      self.changeRightDragEl(true);
       var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: self}});
       self.el.parentNode.dispatchEvent(event);
       self._onDown(e.touches[0]);
     })
-    
-    this.el.addEventListener('mousemove', function(e) {
-        self.changeRightDragEl(false);
-    })
-    
+        
     this.el.addEventListener('mousedown', function(e) {
       
       var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: self}});
@@ -229,74 +221,9 @@ Modal.prototype = {
       self._onDown(e);
     })
     
-    this.el.addEventListener('mouseup', function(e) {
-        // self.changeRightDragEl(true);
-    })
-
-    this._addButtonEvent()
-    this.el.addEventListener("modal-resizeend", function(e) {
-      self._saveFetch();
-      // self.changeRightDragEl(true);
-
-    });
-    
-    this.el.addEventListener("modal-moveend", function(e) {
-      self._saveFetch();
-      // self.changeRightDragEl(true);
-
-    })
-  },
-  
-  changeRightDragEl: function(isRevert = true) {
-      const right_el = this.el.querySelector('.modal-drag-area-right')
-      
-      const size = isRevert ? "0px" : "-10px"
-      if (right_el) {
-        right_el.style.right = size;
-      }
-      this.RIGHT_SCROL = !isRevert ? 0 : 5;
-      
-  },
-  
-  _addButtonEvent: function() {
-    var self = this;
-    if (this.el.querySelector(".modal-title-area .closeBtn")) {
-      this.el.querySelector(".modal-title-area .closeBtn").addEventListener("click", function(e) {
-        e.preventDefault();
-        self.el.parentNode.dispatchEvent(new CustomEvent("cocreate-removemodal", {detail: {modal:self}}));
-      })
-    }
-    
-    if (this.el.querySelector(".parked-closeBtn .closeBtn")) {
-      this.el.querySelector(".parked-closeBtn .closeBtn").addEventListener("click", function(e) {
-        e.preventDefault();
-        self.el.parentNode.dispatchEvent(new CustomEvent("cocreate-removemodal", {detail: {modal:self}}));
-      })
-    }
-    
-    if (this.el.querySelector(".modal-title-area .maximizeBtn")) {
-      this.el.querySelector(".modal-title-area .maximizeBtn").addEventListener("click", function(e) {
-        e.preventDefault();
-        self._setMaximize();
-      })
-    }
-    
-    if (this.el.querySelector(".modal-title-area .minimizeBtn")) {
-      this.el.querySelector(".modal-title-area .minimizeBtn").addEventListener("click", function(e) {
-        e.preventDefault();
-        self.togglePark()
-      })
-    }
-    
-    // if (this.el.querySelector(".modal-title-area .parkBtn")) {
-    //   this.el.querySelector(".modal-title-area .parkBtn").addEventListener("click", function(e) {
-    //     self.togglePark()
-    //   })
-    // }
   },
   
   togglePark: function() {
-    
     if (this.isParked) {
       this.isParked = false;
       this.el.classList.remove("modal-parked");
@@ -316,23 +243,13 @@ Modal.prototype = {
     this.el.style.top = bound.top - parentBound.top;
   },
   
-  _saveFetch: function() {
-    if (this.el.classList.contains("domEditor")) {
-      CoCreateHtmlTags.save(this.el);
-    }
-  },
-  
   _onMove : function(e) {
     const data = this.__getBoundStatus(e)
     this.redraw = true;
   },
   
   _onDown : function(e) {
-    //. set clicked
-
     this.__getBoundStatus(e);
-
-    var isResizing = this.boundStatus.isRight || this.boundStatus.isLeft || this.boundStatus.isTop || this.boundStatus.isBottom;
     
     this.clickedInfo = {
       x: this.point.x,
@@ -341,8 +258,7 @@ Modal.prototype = {
       cy: this.point.cy,
       w: this.rect.width,
       h: this.rect.height,
-      isResizing: isResizing,
-      isMoving: !isResizing && this._isMovable(),
+      isMoving: this._isMovable(),
       boundStatus : this.boundStatus,
       isChangeStart: true
     }
@@ -402,12 +318,8 @@ Modal.prototype = {
   },
   
   __setBound : function(el, x, y, w, h) {
-    var borderHeight = this.el.offsetHeight - this.el.clientHeight;
-    var borderWidth = this.el.offsetWidth - this.el.clientWidth;
     el.style.left = x;
     el.style.top = y;
-    // el.style.width = "calc( " + w + " - " + borderWidth + "px )";
-    // el.style.height = "calc( "  + h + " - " + borderHeight + "px )";
     el.style.width = w;
     el.style.height = h;
   },
@@ -468,41 +380,6 @@ Modal.prototype = {
     
     var eventName = null;
     
-    /**
-     * Resize process
-     **/
-    if (c_info && c_info.isResizing && !this.isParked) {
-      if (c_info.boundStatus.isRight) 
-        this.el.style.width = Math.max(this.point.x, this.options.minWidth) + 'px';
-
-      if (c_info.boundStatus.isBottom) {
-        this.el.style.height = Math.max(this.point.y, this.options.minHeight) + 'px';
-      }
-      
-      if (c_info.boundStatus.isLeft) {
-        var c_width = Math.max(c_info.cx - this.point.cx + c_info.w, this.options.minWidth);
-        if (c_width > this.options.minWidth) {
-          this.el.style.width = c_width + 'px';
-          this.el.style.left = this.point.cx + 'px';
-        }
-      }
-      
-      if (c_info.boundStatus.isTop) {
-        var c_height = Math.max(c_info.cy - this.point.cy + c_info.h, this.options.minHeight);
-        if (c_height > this.options.minHeight) {
-          this.el.style.height = c_height + 'px';
-          this.el.style.top = this.point.cy + 'px';
-        }
-      }
-      
-      eventName = "modal-resizing";
-      if (c_info.isChangeStart) {
-        this.clickedInfo.isChangeStart = false;
-        eventName = "modal-resizestart";
-      }
-      this.createModalEvent(eventName)
-      return;
-    }
     
     if (c_info && c_info.isMoving) {
       /** 
@@ -534,8 +411,6 @@ Modal.prototype = {
       }
 
       if (this.isSnap) {
-        // this.el.style.left = (this.point.cx - this.preSnapped.width / 2) + 'px';
-        // this.el.style.top = (this.point.cy - Math.min(c_info.y, this.preSnapped.height)) + 'px';
         this.el.style.left = this.point.cx + 'px';
         this.el.style.top = this.point.cy + 'px';
         this.el.style.width = this.preSnapped.width + 'px';
@@ -557,10 +432,9 @@ Modal.prototype = {
     }
     
     this.redraw = false;
-    this._setCursor(this.boundStatus);
   },
   
-  _setMaximize() {
+  minMax() {
     if (!this.isSnap) {
       this.isSnap = true;
       this.preSnapped = {x: this.rect.x, y: this.rect.y, width: this.rect.width, height: this.rect.height};
@@ -572,35 +446,8 @@ Modal.prototype = {
       this.el.style.width = this.preSnapped.width + 'px';
       this.el.style.height =  this.preSnapped.height + 'px';
     }
-    
-    // this.clickedInfo = null;
   },
-  
-  _setCursor(bound) {
-    let cursor = "default";
-    if (!this.isParked && bound.isRight && bound.isBottom || bound.isLeft && bound.isTop) cursor = 'nwse-resize';
-    else if (!this.isParked && bound.isRight && bound.isTop || bound.isBottom && bound.left) cursor = 'nwsw-resize';
-    else if (!this.isParked && bound.isRight || bound.isLeft) cursor = 'ew-resize';
-    else if (!this.isParked && bound.isBottom || bound.isTop) cursor = 'ns-resize';
-    else if (this._isMovable()) cursor = "move";
-    this.el.style.cursor = cursor;
-    this.setContainerEvent(cursor);
     
-    
-  },
-  
-  //. setParent Event
-  setContainerEvent(status) {
-    // console.log(status)
-    if (!this.container) return;
-    if (status != 'default') {
-      
-      this.container.style.pointerEvents = "auto";
-    } else {
-      this.container.style.pointerEvents = "none";
-    }
-  },
-  
   _isMovable() {
     var width = this.rect.width;
     if (this.isHeader) {
@@ -611,7 +458,6 @@ Modal.prototype = {
   
   /**
    * Modal Events
-   * resize: modal-resizing, modal-resizeend, modal-resizestart
    * move: modal-moving, modal-moveend, modal-movestart
    **/
   createModalEvent(eventName) {
@@ -634,68 +480,28 @@ Modal.prototype = {
     this.dragArea = document.createElement("div");
     this.dragArea.classList.add("modal-drag-area");
     
+    let top_area = document.createElement("div");
+    top_area.setAttribute("resize", "top");
+
     let left_area = document.createElement("div");
-    left_area.classList.add("modal-drag-area-left");
+    left_area.setAttribute("resize", "left");
 
     let right_area = document.createElement("div");
-    right_area.classList.add("modal-drag-area-right");
+    right_area.setAttribute("resize", "right");
+    right_area.classList.add("right:-5px!important");
+
 
     let bottom_area = document.createElement("div");
-    bottom_area.classList.add("modal-drag-area-bottom");
-    
+    bottom_area.setAttribute("resize", "bottom");
+
+
+    this.el.setAttribute("resizable", "");
     this.el.appendChild(this.dragArea);
+    this.el.appendChild(top_area);
     this.el.appendChild(left_area);
     this.el.appendChild(right_area);
     this.el.appendChild(bottom_area);
-  },
-  
-  resize: function(dx, dy, width, height) {
-    if (this.isSnap) {
-      return;
-    }
-    
-    var borderHeight = this.el.offsetHeight - this.el.clientHeight;
-    var borderWidth = this.el.offsetWidth - this.el.clientWidth;
-    
-    width = width - borderWidth;
-    height = height - borderHeight;
-    /** left, right **/
-    if (dx !== 0 && !this.isPercentDimesion(this.el.style.width)) {
-      var el_width = this.el.offsetWidth;
-      if (el_width + this.rect.left > width && dx < 0) {
-        this.el.style.left = this._setDimension(Math.max(0, this.rect.left + dx));
-      }
-      this.el.style.width = this._setDimension(Math.min(el_width, width));
-    }
-    
-    /** top, bottom **/
-    if (dy !== 0 && !this.isPercentDimesion(this.el.style.height)) {
-      var el_height = this.el.offsetHeight;
-      if (el_height + this.rect.top > height && dy < 0) {
-        this.el.style.top = this._setDimension(Math.max(0, this.rect.top + dy));
-      }
-      this.el.style.height = this._setDimension(Math.min(el_height, height));
-    }
-
-    this.__setRectInfo()
-  },
-  
-  _setDimension: function(data, isPercent) {
-    if (isPercent) {
-      return data + "%";
-    } else {
-      return data + "px";
-    }
-  },
-  
-  isPercentDimesion: function (dimension) {
-    if (!dimension) return false;
-    if (typeof dimension === 'string' && dimension.substr(-1, 1) === "%") {
-      return true;
-    } 
-    return false;
-  }
-  
+  }  
 }
 
 export default Modal;
