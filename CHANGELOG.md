@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.71...v1.2.0) (2022-06-07)
+
+
+### Features
+
+* modals btns will trigger their respective functions in same document and if in iframe will use sendMessage ([07c117f](https://github.com/CoCreate-app/CoCreate-modal/commit/07c117f5a270ef2988c63c376b4cba965ddb61e3))
+
 ## [1.1.71](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.1.70...v1.1.71) (2022-06-07)
 
 
