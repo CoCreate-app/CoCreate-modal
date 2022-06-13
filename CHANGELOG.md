@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.2.1...v1.2.2) (2022-06-13)
+
+
+### Bug Fixes
+
+* update modal btn to actions ([86c140a](https://github.com/CoCreate-app/CoCreate-modal/commit/86c140a1bf9502a37bddf2184b1c366b88d95797))
+
 ## [1.2.1](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.2.0...v1.2.1) (2022-06-12)
 
 
