@@ -86,6 +86,14 @@ CoCreateWindow.prototype = {
   sendWindowBtn: function(btn, type) {
     let modalEl = btn.closest('.modal')
     let modal = this.container.getModalById(modalEl && modalEl.id || this.pageId)
+    // if (!modal) {
+    //   ToDo: reqires function _removeModal directly in modal instance
+    //   let frameElement = btn.ownerDocument.defaultView.frameElement
+    //   if (frameElement) {
+    //     let container = frameElement.ownerDocument.defaultView.CoCreate.modal.container
+    //     modal = container.getModalById(modalEl && modalEl.id || this.pageId)
+    //   }
+    // }
     this.sendWindowBtnEvent(type, modal)
   },
 
@@ -138,7 +146,6 @@ CoCreateWindow.prototype = {
              this.container._removeModal(modal)
             break;
           case 'maximize':
-            // minimizeWindow(w);
             modal.minMax();
             break;
           case 'park':
