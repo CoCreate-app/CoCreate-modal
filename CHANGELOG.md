@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.3.0...v1.4.0) (2022-06-27)
+
+
+### Bug Fixes
+
+* apply pass_id attributes if pass_to exist regardless of element tagName ([0dc29a3](https://github.com/CoCreate-app/CoCreate-modal/commit/0dc29a3857346b2b8625ecdf27c0635b5dcad80c))
+
+
+### Features
+
+* pass- any attribute to modal container ([79bc117](https://github.com/CoCreate-app/CoCreate-modal/commit/79bc117c70e207483e8fd95c5bc7ac9abe3ff2c7))
+
 # [1.3.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.2.3...v1.3.0) (2022-06-27)
 
 
