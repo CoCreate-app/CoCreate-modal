@@ -102,10 +102,13 @@ Modal.prototype = {
     if (windowURL && windowURL != "") {
       iframe = this.__createContainer(this.headerArea);
       iframe.src = windowURL;
-    } else if (attributes) {
+    } else {
       iframe = this.__createContainer(this.headerArea, "div");
       iframe.classList.add('overflow:auto')
       iframe.classList.add('height:100vh')
+    }
+
+    if (attributes){
       if (attributes['pass_to']) {
         iframe.setAttribute('pass_id', attributes['pass_to'].value);
         iframe.setAttribute('collection', "");
@@ -117,8 +120,6 @@ Modal.prototype = {
       if (attributes['pass-src']) {
         iframe.setAttribute('src', attributes['pass-src'].value);
       }
-    } else {
-      return;
     }
     
     this.el.appendChild(iframe)
