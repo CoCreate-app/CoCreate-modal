@@ -111,15 +111,12 @@ Modal.prototype = {
     if (attributes){
       if (attributes['pass_to']) {
         iframe.setAttribute('pass_id', attributes['pass_to'].value);
-        iframe.setAttribute('collection', "");
-        iframe.setAttribute('document_id', "");
       }
-      if (attributes['pass-name']) {
-        iframe.setAttribute('name', attributes['pass-name'].value);
-      }
-      if (attributes['pass-src']) {
-        iframe.setAttribute('src', attributes['pass-src'].value);
-      }
+      for (let attribute of attributes){
+        if (attribute.name.startsWith('pass-')){
+          iframe.setAttribute(`${attribute.name.substring(5)}`, attribute.value);
+        }
+      }  
     }
     
     this.el.appendChild(iframe)
