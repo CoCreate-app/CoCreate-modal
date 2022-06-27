@@ -1,23 +1,12 @@
 import uuid from '@cocreate/uuid'
+import positioning from '@cocreate/position'
 
 
 function Modal(el, options, container) {
   if (!(el && el.nodeType && el.nodeType === 1)) {
 		return;
 	}
-  
-  /** define constant **/	
-	this.MARGIN = 5;
-	this.FULLSCREEN_MARGIN = -60;
-	this.NO_SNAP = -100;
-	this.SNAP_MARGIN = -10;
-
-	this.RIGHT_SCROL = 5;
-	
-// 	if (window.mobilecheck()) {
-// 	  this.MARGIN = 20;
-// 	}
-	
+		
 	/** options **/
 	let defaults = {
 	  minWidth: 60,
@@ -25,36 +14,17 @@ function Modal(el, options, container) {
 	};
 	
 	this.id = uuid.generate();
+  this.container = container;
 	this.el = el;
-	this.clicked = null;
-	this.redraw = false;
-	
-	this.boundStatus = {};
-	
-	/**
-	 * x: mouse x in element
-	 * y: mouse y in element
-	 * cx: x in document
-	 * cy: y in document
-	 * */
-	this.point = {};
-	this.rect = {};
-	this.clickedInfo = null;
-	this.preSnapped = null;
-	this.prevRect = {};
-	this.isSnap = false;
+
 	this.isHeader = true;
-	
-	this.dragArea = null;
 	this.headerArea = null;
-	
+  this.isParked = false;	
+
 	this.width = 0;
 	this.height = 0;
-	this.isParked = false;
 	
 	this.iframe = null;
-	this.container = container;
-	
 
 	this.options = Object.assign(defaults, options);
 	
@@ -64,9 +34,7 @@ function Modal(el, options, container) {
   
 	this._init();
 	this._setModalSize();
-  this._initEvent();
-  this.__animate();
-  
+  this.position = new positioning(this.el, this.container);
 }
 
 Modal.prototype = {
@@ -75,7 +43,6 @@ Modal.prototype = {
   _init : function() {
     var opt = this.options;
     
-    this.isAjax =   opt.ajax  ? opt.ajax    : this.el.getAttribute("modal-ajax")
     var windowURL = opt.url   ? opt.url     : this.el.getAttribute("href");
     var width =     opt.width ? opt.width   : this.el.getAttribute("modal-width");
     var height =    opt.height? opt.height  : this.el.getAttribute("modal-height");
@@ -85,14 +52,7 @@ Modal.prototype = {
     var showHeader= opt.header? opt.header  : this.el.getAttribute("modal-header")
     
     var attributes = opt.attributes;
-    
-    //. set default
-    // this.el.style.width = "300px";
-    // this.el.style.height = "100%";
-    // this.el.style.left = 0;
-    // this.el.style.right = 0;
-    // this.el.style.borderColor = "#888";
-    
+        
     if (width && width != "") {
       this.el.style.width = width;
     } else {
@@ -147,16 +107,15 @@ Modal.prototype = {
       iframe.classList.add('overflow:auto')
       iframe.classList.add('height:100vh')
       if (attributes['pass_to']) {
-        iframe.setAttribute('pass_id', attributes['pass_to']);
+        iframe.setAttribute('pass_id', attributes['pass_to'].value);
         iframe.setAttribute('collection', "");
         iframe.setAttribute('document_id', "");
-        // iframe.setAttribute('data-request_id', uuid.generate());
       }
       if (attributes['pass-name']) {
-        iframe.setAttribute('name', attributes['pass-name']);
+        iframe.setAttribute('name', attributes['pass-name'].value);
       }
       if (attributes['pass-src']) {
-        iframe.setAttribute('src', attributes['pass-src']);
+        iframe.setAttribute('src', attributes['pass-src'].value);
       }
     } else {
       return;
@@ -164,6 +123,15 @@ Modal.prototype = {
     
     this.el.appendChild(iframe)
     this.iframe = iframe;
+
+    let self = this;
+    this.el.addEventListener("dblclick", function(e) {
+      if (self.isParked) {
+        self.isParked = false;
+        self.el.classList.remove("modal-parked");
+      } 
+    })
+
   },
   
   __createContainer: function(isHeader, type) {
@@ -181,57 +149,7 @@ Modal.prototype = {
     }
     return container;
   },
-  
-  _initEvent : function() {
-    let self = this;
     
-    if (this.iframe) {
-      this.iframe.addEventListener('load', function() {
-        // console.log(self.iframe.contentDocument);
-        const iframeContent = self.iframe.contentDocument;        
-        iframeContent.addEventListener('click', function() {
-           var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: self}});
-          self.el.parentNode.dispatchEvent(event);
-        })
-      });
-    }
-
-    this.el.addEventListener("click", function(e) {
-      var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: self}});
-      self.el.parentNode.dispatchEvent(event);
-    }, true)
-    
-    this.el.addEventListener("dblclick", function(e) {
-      if (self.isParked) {
-        self.isParked = false;
-        self.el.classList.remove("modal-parked");
-      } 
-    })
-    
-    this.el.addEventListener('touchstart', function(e) {
-      var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: self}});
-      self.el.parentNode.dispatchEvent(event);
-      self._onDown(e.touches[0]);
-    })
-        
-    this.el.addEventListener('mousedown', function(e) {
-      
-      var event = new CustomEvent("cocreate-selectmodal", {detail: {modal: self}});
-      self.el.parentNode.dispatchEvent(event);
-      self._onDown(e);
-    })
-    
-  },
-  
-  togglePark: function() {
-    if (this.isParked) {
-      this.isParked = false;
-      this.el.classList.remove("modal-parked");
-    } else {
-      this.isParked = true;
-      this.el.classList.add("modal-parked")
-    }
-  },
   
   _setModalSize: function() {
     let bound = this.el.getBoundingClientRect();
@@ -242,229 +160,7 @@ Modal.prototype = {
     this.el.style.left = bound.left - parentBound.left;
     this.el.style.top = bound.top - parentBound.top;
   },
-  
-  _onMove : function(e) {
-    const data = this.__getBoundStatus(e)
-    this.redraw = true;
-  },
-  
-  _onDown : function(e) {
-    this.__getBoundStatus(e);
     
-    this.clickedInfo = {
-      x: this.point.x,
-      y: this.point.y,
-      cx: this.point.cx,
-      cy: this.point.cy,
-      w: this.rect.width,
-      h: this.rect.height,
-      isMoving: this._isMovable(),
-      boundStatus : this.boundStatus,
-      isChangeStart: true
-    }
-  },
-  
-  _onUp: function(e) {
-    if (e) {
-      this.__getBoundStatus(e);
-    }
-    if (!this.clickedInfo) {
-      return;
-    }
-    if (this.clickedInfo.isMoving && !this.isParked) {
-      let p_w = this.el.parentNode.offsetWidth, p_h = this.el.parentNode.offsetHeight;
-      let snap_info = null;
-      
-      if (this.__between(this.rect.top, this.NO_SNAP, this.FULLSCREEN_MARGIN) ||
-          this.__between(this.rect.left, this.NO_SNAP, this.FULLSCREEN_MARGIN) ||
-          this.__between(p_w - this.rect.right, this.NO_SNAP, this.FULLSCREEN_MARGIN) ||
-          this.__between(p_h - this.rect.bottom, this.NO_SNAP, this.FULLSCREEN_MARGIN)) {
-          snap_info = {x: 0, y: 0, w:'100%', h:'100%'}
-      } else if (this.__between(this.rect.top, this.NO_SNAP, this.SNAP_MARGIN)) {
-          snap_info = {x: 0, y: 0, w:'100%', h:'50%'}
-      } else if (this.__between(this.rect.left, this.NO_SNAP, this.SNAP_MARGIN)) {
-          snap_info = {x: 0, y: 0, w:'50%', h:'100%'} 
-      } else if (this.__between(p_w - this.rect.right, this.NO_SNAP, this.SNAP_MARGIN)) {
-          snap_info = {x: '50%', y: 0, w: '50%', h:'100%'}
-      } else if (this.__between(p_h - this.rect.bottom, this.NO_SNAP, this.SNAP_MARGIN)) {
-          snap_info = {x: 0, y: '50%', w: '100%', h: '50%'}
-      }
-
-      if (snap_info && !this.isSnap) {
-        this.__setBound(this.el, snap_info.x, snap_info.y, snap_info.w, snap_info.h);
-        this.preSnapped = {x: this.rect.x, y: this.rect.y, width: this.rect.width, height: this.rect.height};
-        this.isSnap = true;
-      } 
-      
-      var ghost_info = {
-        x: this.rect.x,
-        y: this.rect.y,
-        w: this.rect.width,
-        h: this.rect.height
-      }
-      this.el.parentNode.dispatchEvent(new CustomEvent("cocreate-modalghost", {detail: ghost_info}));
-    }
-
-    if (this.clickedInfo.isResizing) {
-      this.createModalEvent('modal-resizeend');
-      this._setModalSize()
-      this.isSnap = false;
-    } else if (this.clickedInfo.isMoving) {
-      this.createModalEvent('modal-moveend');
-    }
-    
-    
-    this.clickedInfo = null;
-  },
-  
-  __setBound : function(el, x, y, w, h) {
-    el.style.left = x;
-    el.style.top = y;
-    el.style.width = w;
-    el.style.height = h;
-  },
-  
-  __setRectInfo: function() {
-    let bound = this.el.getBoundingClientRect();
-    let parentRect = this.el.parentNode.getBoundingClientRect();
-    this.rect = {};
-    this.rect.x = bound.x - parentRect.x;
-    this.rect.y = bound.y - parentRect.y;
-    this.rect.width = bound.width;
-    this.rect.height = bound.height;
-    this.rect.top = bound.top - parentRect.top;
-    this.rect.bottom = bound.bottom - parentRect.top;
-    this.rect.left = bound.left - parentRect.left;
-    this.rect.right = bound.right - parentRect.left;
-  },
-  
-  __getBoundStatus : function(e) {
-    let bound = this.el.getBoundingClientRect();
-    let parentRect = this.el.parentNode.getBoundingClientRect();
-    let x = e.clientX - bound.left;// - parentRect.left;
-    let y = e.clientY - bound.top;// - parentRect.top;
-
-    this.__setRectInfo();
-
-    this.point.x = x;
-    this.point.y = y;
-    this.point.cx = e.clientX - parentRect.left;
-    this.point.cy = e.clientY - parentRect.top;
-
-    this.boundStatus = {
-      isTop : y < this.MARGIN && y > -this.MARGIN,
-      isLeft : x < this.MARGIN && x > -this.MARGIN,
-      isRight : x >= bound.width - this.RIGHT_SCROL && x <= bound.width + this.MARGIN + (this.MARGIN - this.RIGHT_SCROL),
-      isBottom: y >= bound.height - this.MARGIN && y <= bound.height + this.MARGIN
-    }
-    
-    return this.boundStatus;
-  },
-  
-  __between: function(x, min, max) {
-    return x >= min && x <= max;
-  },
-  
-  __animate : function() {
-    let self = this;
-    requestAnimationFrame(function() {
-      self.__animate();
-    });
-    
-    if (!this.redraw) {
-      return;
-    }
-    this.redraw = false;
-    
-    let c_info = this.clickedInfo;
-    
-    var eventName = null;
-    
-    
-    if (c_info && c_info.isMoving) {
-      /** 
-       * Ghost Process
-       **/
-       
-      let p_w = this.el.parentNode.offsetWidth, p_h = this.el.parentNode.offsetHeight;
-      let ghost_info = null;
-
-      if (this.__between(this.rect.top, this.NO_SNAP, this.FULLSCREEN_MARGIN) ||
-          this.__between(this.rect.left, this.NO_SNAP, this.FULLSCREEN_MARGIN) ||
-          this.__between(p_w - this.rect.right, this.NO_SNAP, this.FULLSCREEN_MARGIN) ||
-          this.__between(p_h - this.rect.bottom, this.NO_SNAP, this.FULLSCREEN_MARGIN)) {
-          ghost_info = {x: 0, y: 0, w:p_w, h:p_h, type: "show"}
-      } else if (this.__between(this.rect.top, this.NO_SNAP, this.SNAP_MARGIN)) {
-          ghost_info = {x: 0, y: 0, w:p_w, h:p_h / 2, type: "show"}
-      } else if (this.__between(this.rect.left, this.NO_SNAP, this.SNAP_MARGIN)) {
-          ghost_info = {x: 0, y: 0, w:p_w / 2, h: p_h, type: "show"}
-      } else if (this.__between(p_w - this.rect.right, this.NO_SNAP, this.SNAP_MARGIN)) {
-          ghost_info = {x: p_w / 2, y: 0, w: p_w / 2, h: p_h, type: "show"}
-      } else if (this.__between(p_h - this.rect.bottom, this.NO_SNAP, this.SNAP_MARGIN)) {
-          ghost_info = {x: 0, y: p_h / 2, w:p_w, h:p_h / 2, type: "show"}
-      } else {
-          ghost_info = {x: this.rect.left, y: this.rect.top, w: this.rect.width, h: this.rect.height, type: "hide"}
-      }
-
-      if (ghost_info && !this.isParked && !this.isSnap) {
-        this.el.parentNode.dispatchEvent(new CustomEvent("cocreate-modalghost", {detail: ghost_info}));
-      }
-
-      if (this.isSnap) {
-        this.el.style.left = this.point.cx + 'px';
-        this.el.style.top = this.point.cy + 'px';
-        this.el.style.width = this.preSnapped.width + 'px';
-        this.el.style.height =  this.preSnapped.height + 'px';
-        this.isSnap = false;
-      } else {
-        this.el.style.top = (this.point.cy - c_info.y) + 'px';
-        this.el.style.left = (this.point.cx - c_info.x) + 'px';
-      }
-      
-      eventName = "modal-moving";
-      if (c_info.isChangeStart) {
-        this.clickedInfo.isChangeStart = false;
-        eventName = "modal-movestart";
-      }
-      
-      this.createModalEvent(eventName)
-      return;
-    }
-    
-    this.redraw = false;
-  },
-  
-  minMax() {
-    if (!this.isSnap) {
-      this.isSnap = true;
-      this.preSnapped = {x: this.rect.x, y: this.rect.y, width: this.rect.width, height: this.rect.height};
-      this.__setBound(this.el, 0, 0, "100%", "100%");
-    } else {
-      this.isSnap = false;
-      this.el.style.left = this.preSnapped.x + 'px';
-      this.el.style.top = this.preSnapped.y + 'px';
-      this.el.style.width = this.preSnapped.width + 'px';
-      this.el.style.height =  this.preSnapped.height + 'px';
-    }
-  },
-    
-  _isMovable() {
-    var width = this.rect.width;
-    if (this.isHeader) {
-      width -= 120;
-    }
-    return this.point.x > 0 && this.point.x < width && this.point.y > 0 && this.point.y < 50;
-  },
-  
-  /**
-   * Modal Events
-   * move: modal-moving, modal-moveend, modal-movestart
-   **/
-  createModalEvent(eventName) {
-    var event = new CustomEvent(eventName, {});
-    this.el.dispatchEvent(event);
-  },
-  
   _createTitle: function(n) {
     var header_template = `<div class="nav bg-light-gray"><ul class="modal-title-area">
           <li><a class="minimizeBtn"><i class="far fa-window-minimize"></i></a></li>
@@ -477,8 +173,8 @@ Modal.prototype = {
   },
   
   _createDragArea: function() {
-    this.dragArea = document.createElement("div");
-    this.dragArea.classList.add("modal-drag-area");
+    let dragArea = document.createElement("div");
+    dragArea.classList.add("modal-drag-area");
     
     let top_area = document.createElement("div");
     top_area.setAttribute("resize", "top");
@@ -490,18 +186,27 @@ Modal.prototype = {
     right_area.setAttribute("resize", "right");
     right_area.classList.add("right:-5px!important");
 
-
     let bottom_area = document.createElement("div");
     bottom_area.setAttribute("resize", "bottom");
 
-
     this.el.setAttribute("resizable", "");
-    this.el.appendChild(this.dragArea);
+    this.el.appendChild(dragArea);
     this.el.appendChild(top_area);
     this.el.appendChild(left_area);
     this.el.appendChild(right_area);
     this.el.appendChild(bottom_area);
-  }  
+  },
+
+  togglePark: function() {
+    if (this.isParked) {
+      this.isParked = false;
+      this.el.classList.remove("modal-parked");
+    } else {
+      this.isParked = true;
+      this.el.classList.add("modal-parked")
+    }
+  }
+ 
 }
 
 export default Modal;

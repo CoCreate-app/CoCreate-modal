@@ -3,7 +3,6 @@ import { ModalStorage } from "./utils.js"
 import uuid from '@cocreate/uuid'
 import action from '@cocreate/actions';
 import observer from '@cocreate/observer';
-import utils from '@cocreate/utils';
 import message from '@cocreate/message-client';
 import './index.css';
 
@@ -170,11 +169,10 @@ CoCreateWindow.prototype = {
       y:      aTag.getAttribute('modal-y'),
       width:  aTag.getAttribute('modal-width'),
       height: aTag.getAttribute('modal-height'),
-      ajax:   aTag.getAttribute('modal-ajax'),
       color:  aTag.getAttribute('modal-color'),
       header: aTag.getAttribute('modal-header'), 
       
-      attributes: utils.getAttributes(aTag)
+      attributes: aTag.attributes
     }
     
     var open_type = aTag.getAttribute('modal-open');
