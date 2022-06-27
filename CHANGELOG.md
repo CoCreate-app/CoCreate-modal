@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.2.3...v1.3.0) (2022-06-27)
+
+
+### Features
+
+* split modal into 2 components, modal and position. Added @cocreate/position to provide movable modal functionality ([2f9c50f](https://github.com/CoCreate-app/CoCreate-modal/commit/2f9c50fce30e671bf73402460b58162e10ed9ebe))
+
 ## [1.2.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.2.2...v1.2.3) (2022-06-18)
 
 
