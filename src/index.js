@@ -64,7 +64,7 @@ function CoCreateWindow(id) {
 CoCreateWindow.prototype = {
   _checkRoot: function() {
     try {
-        return window.self === window.top;
+        return window === window.top;
     } catch (e) {
         return false;
     }
