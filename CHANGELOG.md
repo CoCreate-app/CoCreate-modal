@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.1...v1.4.2) (2022-07-04)
+
+
+### Bug Fixes
+
+* create an array of elements attributes to use with send message ([172d977](https://github.com/CoCreate-app/CoCreate-modal/commit/172d9778c6222e7239215014a700829099f3f6a5))
+
 ## [1.4.1](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.0...v1.4.1) (2022-07-03)
 
 
