@@ -162,7 +162,10 @@ CoCreateWindow.prototype = {
   },
    
   openWindow: function(aTag) {
-    
+    let attributes = [];
+    for (let attribute of aTag.attributes)
+      attributes[attribute.name] = attribute.value
+
     var attr = {
       url:    aTag.href || aTag.getAttribute('href'),
       x:      aTag.getAttribute('modal-x'),
@@ -171,8 +174,7 @@ CoCreateWindow.prototype = {
       height: aTag.getAttribute('modal-height'),
       color:  aTag.getAttribute('modal-color'),
       header: aTag.getAttribute('modal-header'), 
-      
-      attributes: aTag.attributes
+      attributes: attributes
     }
     
     var open_type = aTag.getAttribute('modal-open');
