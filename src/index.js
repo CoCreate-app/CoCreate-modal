@@ -145,7 +145,7 @@ CoCreateWindow.prototype = {
              this.container._removeModal(modal)
             break;
           case 'maximize':
-            modal.minMax();
+            modal.position.minMax();
             break;
           case 'park':
             modal.togglePark();
