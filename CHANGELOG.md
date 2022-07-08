@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.2...v1.4.3) (2022-07-08)
+
+
+### Bug Fixes
+
+* position.minMax ([fd8f5da](https://github.com/CoCreate-app/CoCreate-modal/commit/fd8f5da8ee71c7fa5ab2ed525e1ae651dc7d43b5))
+
 ## [1.4.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.1...v1.4.2) (2022-07-04)
 
 
