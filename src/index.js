@@ -100,7 +100,7 @@ CoCreateWindow.prototype = {
     var json = {
       apiKey: config.apiKey,
       organization_id: config.organization_id,
-      broadcast_sender: true,
+      broadcastSender: true,
       message: 'windowBtnEvent',
       data: {
         "parentId": this.parentId,
@@ -211,7 +211,7 @@ CoCreateWindow.prototype = {
       message.send({
         apiKey: config.apiKey,
         organization_id: config.organization_id,
-        broadcast_sender: true,
+        broadcastSender: true,
         message: 'openWindow',
         data: attr
       });
