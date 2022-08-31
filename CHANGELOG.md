@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.3...v1.4.4) (2022-08-31)
+
+
+### Bug Fixes
+
+* rename variables isBroadcast and isBroadcastSender to broadcast and broadcastSender ([bc42742](https://github.com/CoCreate-app/CoCreate-modal/commit/bc42742f42ad30de0cd3b9a311df0985ed15baa4))
+
 ## [1.4.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.2...v1.4.3) (2022-07-08)
 
 
