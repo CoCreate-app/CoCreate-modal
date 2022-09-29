@@ -1,3 +1,10 @@
+## [1.4.6](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.5...v1.4.6) (2022-09-29)
+
+
+### Bug Fixes
+
+* config renameed to CoCreateConfig ([b0b1273](https://github.com/CoCreate-app/CoCreate-modal/commit/b0b1273efb61220de00eda4e96aedd72286aa469))
+
 ## [1.4.5](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.4...v1.4.5) (2022-09-01)
 
 
