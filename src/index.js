@@ -98,8 +98,8 @@ CoCreateWindow.prototype = {
 
   sendWindowBtnEvent: function(type, modal) {
     var json = {
-      apiKey: config.apiKey,
-      organization_id: config.organization_id,
+      apiKey: CoCreateConfig.apiKey,
+      organization_id: CoCreateConfig.organization_id,
       broadcastSender: true,
       message: 'windowBtnEvent',
       data: {
@@ -209,8 +209,8 @@ CoCreateWindow.prototype = {
       }
     } else {
       message.send({
-        apiKey: config.apiKey,
-        organization_id: config.organization_id,
+        apiKey: CoCreateConfig.apiKey,
+        organization_id: CoCreateConfig.organization_id,
         broadcastSender: true,
         message: 'openWindow',
         data: attr
