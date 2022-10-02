@@ -1,3 +1,11 @@
+## [1.4.13](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.12...v1.4.13) (2022-10-02)
+
+
+### Bug Fixes
+
+* bump @cocreate/hosting and @cocreate/socket-client ([609beb5](https://github.com/CoCreate-app/CoCreate-modal/commit/609beb5f982ad9a894dc38c4852531289a468b21))
+* config renamed to CoCreateConfig ([046348b](https://github.com/CoCreate-app/CoCreate-modal/commit/046348b76e4bf7c861e345d32193edc925bc8094))
+
 ## [1.4.12](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.11...v1.4.12) (2022-10-01)
 
 
