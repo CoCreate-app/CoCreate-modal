@@ -1,45 +1,44 @@
-import ModalContainer from "./container.js"
-import { ModalStorage } from "./utils.js"
+import ModalViewPort from "./viewport.js"
 import uuid from '@cocreate/uuid'
 import action from '@cocreate/actions';
 import observer from '@cocreate/observer';
 import message from '@cocreate/message-client';
 import './index.css';
 
-function CoCreateWindow(id) {
-  let container_id = (id) ? id : 'modal-viewport';
-  this.container = null;
-  this.id = container_id;
+function CoCreateModal(id) {
+  this.viewPort = null;
+  this.id = id || 'modal-viewport'
   
   this.pageId = uuid.generate();
   this.isRoot = this._checkRoot();
-  this.document = document;
   
-  if (!this.isRoot) {
-    this.parentId = ModalStorage.parentPageId;
-    this.pageId = ModalStorage.pageId;
-    this.rootId = ModalStorage.rootPageId;
-  } else {
-    ModalStorage.rootPageId = this.pageId;
+  if (this.isRoot) {
+    this.viewPorts = new Map();
+    this.viewPorts.set(this.pageId, this)
+    this.modals = new Map();
     this.rootId = this.pageId;
     this.parentId = this.pageId;
-  }
+    window.localStorage.setItem('rootId', this.pageId)
+  } else {
+    this.pageId = window.localStorage.getItem('pageId')
+    let viewPort = window.top.CoCreate.modal.viewPorts
+    if (viewPort) 
+      viewPort.set(this.pageId, this)
+    
+    // ToDo:  can be depreciated if we find a better way to pass rootid and parentid
+    this.parentId = window.localStorage.getItem('parentId')
+    this.rootId = window.top.CoCreate.modal.rootId
+  } 
   
-  this._createContainer();
+  this._createViewPort();
   
   this._initSocket();
   
-  //. set parent_id and page_id for test 
-  
-  var html = document.querySelector("html");
-  html.setAttribute("parent_id", this.parentId);
-  html.setAttribute("page_id", this.pageId);
-
   action.init({
     name: "closeModal",
     endEvent: "closeModal",
     callback: (btn, data) => {
-      this.sendWindowBtn(btn, 'close');
+      this.modalAction(btn, 'close');
     },
   });
 
@@ -47,7 +46,7 @@ function CoCreateWindow(id) {
     name: "minMaxModal",
     endEvent: "minMaxModal",
     callback: (btn, data) => {
-      this.sendWindowBtn(btn, 'maximize');
+      this.modalAction(btn, 'maximize');
     },
   });
 
@@ -55,13 +54,13 @@ function CoCreateWindow(id) {
     name: "parkModal",
     endEvent: "parkModal",
     callback: (btn, data) => {
-      this.sendWindowBtn(btn, 'park');
+      this.modalAction(btn, 'park');
     },
   });
   
 }
 
-CoCreateWindow.prototype = {
+CoCreateModal.prototype = {
   _checkRoot: function() {
     try {
         return window === window.top;
@@ -70,79 +69,130 @@ CoCreateWindow.prototype = {
     }
   },
 
-  _createContainer: function() {
-    if (this.container) return true;
+  _createViewPort: function() {
+    if (this.viewPort) 
+      return true;
 
     var el = document.getElementById(this.id);
     if (el) {
-      this.container = new ModalContainer(el);
+      this.viewPort = new ModalViewPort(el);
       return true;
     } else {
       return false;
     }
   },
   
-  sendWindowBtn: function(btn, type) {
-    let modalEl = btn.closest('.modal')
-    let modal = this.container.getModalById(modalEl && modalEl.id || this.pageId)
-    // if (!modal) {
-    //   ToDo: reqires function _removeModal directly in modal instance
-    //   let frameElement = btn.ownerDocument.defaultView.frameElement
-    //   if (frameElement) {
-    //     let container = frameElement.ownerDocument.defaultView.CoCreate.modal.container
-    //     modal = container.getModalById(modalEl && modalEl.id || this.pageId)
-    //   }
-    // }
-    this.sendWindowBtnEvent(type, modal)
+  _initSocket: function() {
+    var self = this;    
+    message.listen('modalAction', function(response) {
+        self.runModalAction(response.data)
+    })
+  },
+  
+  open: function(aTag) {
+    let attributes = [];
+    for (let attribute of aTag.attributes)
+      attributes[attribute.name] = attribute.value
+
+    let data = {
+      url:    aTag.href || aTag.getAttribute('href'),
+      x:      aTag.getAttribute('modal-x'),
+      y:      aTag.getAttribute('modal-y'),
+      width:  aTag.getAttribute('modal-width'),
+      height: aTag.getAttribute('modal-height'),
+      color:  aTag.getAttribute('modal-color'),
+      header: aTag.getAttribute('modal-header'), 
+      attributes: attributes
+    }
+    
+    let openIn = aTag.getAttribute('modal-open') || 'root';
+        
+    let openId;
+    switch (openIn) {
+      case 'parent':
+        openId = this.parentId;
+        break;
+      case 'page':
+        openId = this.pageId;
+        break;
+      case 'root':
+        openId = this.rootId;
+        break;
+      default:
+        openId = openIn;
+        break;
+    }
+
+    window.localStorage.setItem('parentId', openId)
+    
+    data.type = 'open';
+    data.parentId = openId;
+
+    if (this.isRoot) {
+      if (this._createViewPort())
+        this.viewPort._createModal(data);  
+    } else {
+      let viewPort = window.top.CoCreate.modal.viewPorts.get(openId);
+      if (viewPort.pageId == data.parentId) {
+        viewPort.viewPort._createModal(data);
+      } else {
+        this.modalAction(btn, 'open', data)
+      }
+    }
   },
 
-  sendWindowBtnEvent: function(type, modal) {
-    var json = {
+  modalAction: function(btn, type, data) {
+    let json = {
       apiKey: CoCreateConfig.apiKey,
       organization_id: CoCreateConfig.organization_id,
       broadcastSender: true,
-      message: 'windowBtnEvent',
-      data: {
-        "parentId": this.parentId,
-        "pageId": this.pageId,
-        "modal": modal,
-        "type": type
-      }
+      message: 'modalAction',
     }
-    if (modal)
-      this.buttons(json.data)
-    else 
+
+    if (type == 'open') {
+      json.data = data
       message.send(json);
-  },
-  
-  _initSocket: function() {
-    var _this = this;
-    message.listen('openWindow', function(response) {
-      let data = response.data;
-      if (data.parentId == _this.pageId) {
-        _this.container._createModal(data);
+    } else {
+      let modalEl = btn.closest('.modal')
+
+      let modal
+      if (modalEl)
+        modal = this.viewPort.modals.get(modalEl.id || this.pageId)
+      if (!modal) {
+        modal = window.top.CoCreate.modal.modals.get(this.pageId);
       }
-    }),
-    
-    message.listen('windowBtnEvent', function(response) {
-        _this.buttons(response.data)
-    })
+      json.data = {
+        parentId: this.parentId,
+        pageId: this.pageId,
+        modal,
+        type
+      }
+
+      if (modal)
+        this.runModalAction(json.data)
+      else
+        message.send(json);
+    }
   },
 
-  buttons: function(data) {
-    if (data.parentId == this.pageId) {
+  runModalAction: function(data) {
+    if (data.modal || data.parentId == this.pageId) {
         
       var pageId = data.pageId;
       var type = data.type;
       var modal = data.modal
 
       if (!modal)
-        modal = this.container.getModalById(pageId);
+        modal = this.viewPort.modals.get(pageId);
       
       if (modal) {
         switch (type) {
+          case 'open':
+            if (data.parentId == this.pageId)
+              this.viewPort._createModal(data)          
+            break;
           case 'close':
-             this.container._removeModal(modal)
+            modal.viewPort._removeModal(modal)
             break;
           case 'maximize':
             modal.position.minMax();
@@ -155,71 +205,8 @@ CoCreateWindow.prototype = {
       }
     }
 
-  },
-  
-  open: function(aTag) {
-    this.openWindow(aTag);
-  },
-   
-  openWindow: function(aTag) {
-    let attributes = [];
-    for (let attribute of aTag.attributes)
-      attributes[attribute.name] = attribute.value
+  }
 
-    var attr = {
-      url:    aTag.href || aTag.getAttribute('href'),
-      x:      aTag.getAttribute('modal-x'),
-      y:      aTag.getAttribute('modal-y'),
-      width:  aTag.getAttribute('modal-width'),
-      height: aTag.getAttribute('modal-height'),
-      color:  aTag.getAttribute('modal-color'),
-      header: aTag.getAttribute('modal-header'), 
-      attributes: attributes
-    }
-    
-    var open_type = aTag.getAttribute('modal-open');
-    open_type = open_type ? open_type : 'root';
-    
-    ModalStorage.rootPageId = this.rootId;
-    
-    var open_id = open_type;
-    switch (open_type) {
-      case 'parent':
-        open_id = this.parentId;
-        break;
-      case 'page':
-        open_id = this.pageId;
-        break;
-      case 'root':
-        open_id = this.rootId;
-        break;
-      default:
-        open_id = open_type;
-        break;
-        // code
-    }
-
-    ModalStorage.parentPageId = open_id;
-    
-    attr.parentId = open_id;
-    
-    if (this.isRoot) {
-      if (this._createContainer()) {
-        this.container._createModal(attr);  
-      }
-    } else {
-      message.send({
-        apiKey: CoCreateConfig.apiKey,
-        organization_id: CoCreateConfig.organization_id,
-        broadcastSender: true,
-        message: 'openWindow',
-        data: attr
-      });
-    }
-  },
 }
 
-
-let CoCreateModal = new CoCreateWindow();
-
-export default CoCreateModal;
+export default new CoCreateModal();

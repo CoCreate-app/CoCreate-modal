@@ -1,8 +1,7 @@
 import uuid from '@cocreate/uuid'
-import positioning from '@cocreate/position'
+import '@cocreate/position'
 
-
-function Modal(el, options, container) {
+function Modal(el, options, viewPort) {
   if (!(el && el.nodeType && el.nodeType === 1)) {
 		return;
 	}
@@ -14,7 +13,7 @@ function Modal(el, options, container) {
 	};
 	
 	this.id = uuid.generate();
-  this.container = container;
+  this.viewPort = viewPort;
 	this.el = el;
 
 	this.isHeader = true;
@@ -24,17 +23,17 @@ function Modal(el, options, container) {
 	this.width = 0;
 	this.height = 0;
 	
-	this.iframe = null;
+	this.frame = null;
 
 	this.options = Object.assign(defaults, options);
 	
 	this.el.setAttribute("id", this.id);
+	this.el.setAttribute("moveable", '');
 	
-  window.localStorage.setItem('page_id', this.id)
+  window.localStorage.setItem('pageId', this.id)
   
 	this._init();
 	this._setModalSize();
-  this.position = new positioning(this.el, this.container);
 }
 
 Modal.prototype = {
@@ -98,29 +97,29 @@ Modal.prototype = {
     
     this.el.innerHTML = this.el.innerHTML + `<div class="parked-closeBtn"><i class="fas fa-times closeBtn"></i></div>`;
     
-    let iframe = null;
+    let frame = null;
     if (windowURL && windowURL != "") {
-      iframe = this.__createContainer(this.headerArea);
-      iframe.src = windowURL;
+      frame = this.__createFrame(this.headerArea);
+      frame.src = windowURL;
     } else {
-      iframe = this.__createContainer(this.headerArea, "div");
-      iframe.classList.add('overflow:auto')
-      iframe.classList.add('height:100vh')
+      frame = this.__createFrame(this.headerArea, "div");
+      frame.classList.add('overflow:auto')
+      frame.classList.add('height:100vh')
     }
 
     if (attributes){
       if (attributes['pass_to']) {
-        iframe.setAttribute('pass_id', attributes['pass_to'].value);
+        frame.setAttribute('pass_id', attributes['pass_to'].value);
       }
       for (let attribute of attributes){
         if (attribute.name.startsWith('pass-')){
-          iframe.setAttribute(`${attribute.name.substring(5)}`, attribute.value);
+          frame.setAttribute(`${attribute.name.substring(5)}`, attribute.value);
         }
       }  
     }
     
-    this.el.appendChild(iframe)
-    this.iframe = iframe;
+    this.el.appendChild(frame)
+    this.frame = frame;
 
     let self = this;
     this.el.addEventListener("dblclick", function(e) {
@@ -132,20 +131,20 @@ Modal.prototype = {
 
   },
   
-  __createContainer: function(isHeader, type) {
+  __createFrame: function(isHeader, type) {
     const tag = type || "iframe";
     
-    let container = document.createElement(tag);
-    container.style.width = "100%";
-    container.style.height = "100%";
+    let frame = document.createElement(tag);
+    frame.style.width = "100%";
+    frame.style.height = "100%";
     if (isHeader) {
-      container.style.height = "calc(100% - 45px)";
+      frame.style.height = "calc(100% - 45px)";
     }
     
     if (type != "iframe") {
-      container.setAttribute('class', 'domEditor');
+      frame.setAttribute('class', 'domEditor');
     }
-    return container;
+    return frame;
   },
     
   
