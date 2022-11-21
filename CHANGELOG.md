@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.14...v1.5.0) (2022-11-21)
+
+
+### Features
+
+* offline support,  iframe cross origin support when online using socket. depreciated ModalStorage ([8b5c4d3](https://github.com/CoCreate-app/CoCreate-modal/commit/8b5c4d38d2303269f88415530cde5a4f9f13ecd1))
+
 ## [1.4.14](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.4.13...v1.4.14) (2022-10-02)
 
 
