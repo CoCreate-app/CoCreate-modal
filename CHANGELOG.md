@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.5.2...v1.5.3) (2022-11-21)
+
+
+### Bug Fixes
+
+* replaced document_id with document._id ([6f48bbe](https://github.com/CoCreate-app/CoCreate-modal/commit/6f48bbe22dd2e1a68a46afeb01f2b930b8bee7cc))
+
 ## [1.5.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.5.1...v1.5.2) (2022-11-21)
 
 
