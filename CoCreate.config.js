@@ -10,7 +10,7 @@ module.exports = {
             "collection": "files",
             "document_id": "60206d5b3c260207bf49cab4",
             "key": "src",
-            "data":{
+            "document": {
                 "name": "index.html",
                 "path": "/docs/modal/index.html",
                 "domains": [
