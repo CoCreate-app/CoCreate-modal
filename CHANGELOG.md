@@ -1,3 +1,10 @@
+## [1.5.5](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.5.4...v1.5.5) (2022-11-22)
+
+
+### Bug Fixes
+
+* apply src: {{source}} to CoCreate.config ([7ee48e0](https://github.com/CoCreate-app/CoCreate-modal/commit/7ee48e0c650439226e5bb1465584005302fa6faa))
+
 ## [1.5.4](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.5.3...v1.5.4) (2022-11-21)
 
 
