@@ -1,3 +1,10 @@
+## [1.5.18](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.5.17...v1.5.18) (2022-12-09)
+
+
+### Bug Fixes
+
+* bump dependencies ([d520023](https://github.com/CoCreate-app/CoCreate-modal/commit/d520023ef3912f84808109770ef57d3ab7706560))
+
 ## [1.5.17](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.5.16...v1.5.17) (2022-12-08)
 
 
