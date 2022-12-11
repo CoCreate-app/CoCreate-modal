@@ -195,7 +195,7 @@ CoCreateModal.prototype = {
             modal.viewPort._removeModal(modal)
             break;
           case 'maximize':
-            modal.position.minMax();
+            modal.el.position.minMax();
             break;
           case 'park':
             modal.togglePark();
