@@ -1,3 +1,10 @@
+## [1.5.23](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.5.22...v1.5.23) (2022-12-15)
+
+
+### Bug Fixes
+
+* add missing dev dependency style-loader ([2d90858](https://github.com/CoCreate-app/CoCreate-modal/commit/2d908585d07c0de2b3174baf5b57aedb99f67f59))
+
 ## [1.5.22](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.5.21...v1.5.22) (2022-12-13)
 
 
