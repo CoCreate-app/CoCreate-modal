@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/modal",
-  "version": "1.5.23",
+  "version": "1.5.24",
   "description": "A draggable, movable and resizable modal. customizable via attributes, great for popups, alerts, multitasking and displaying multiple views.",
   "keywords": [
     "modal",
@@ -20,7 +20,9 @@
     "html5-framework",
     "javascript-framework"
   ],
-  "publishConfig": { "access": "public" },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "start": "npx webpack --config webpack.config.js",
     "build": "NODE_ENV=production npx webpack --config webpack.config.js",
@@ -34,7 +36,9 @@
   },
   "author": "CoCreate LLC",
   "license": "MIT",
-  "bugs": { "url": "https://github.com/CoCreate-app/CoCreate-modal/issues" },
+  "bugs": {
+    "url": "https://github.com/CoCreate-app/CoCreate-modal/issues"
+  },
   "homepage": "https://cocreate.app/docs/modal",
   "funding": {
     "type": "GitHub Sponsors ❤",
