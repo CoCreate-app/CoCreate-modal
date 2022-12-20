@@ -20,9 +20,7 @@
     "html5-framework",
     "javascript-framework"
   ],
-  "publishConfig": {
-    "access": "public"
-  },
+  "publishConfig": { "access": "public" },
   "scripts": {
     "start": "npx webpack --config webpack.config.js",
     "build": "NODE_ENV=production npx webpack --config webpack.config.js",
@@ -36,9 +34,7 @@
   },
   "author": "CoCreate LLC",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/CoCreate-app/CoCreate-modal/issues"
-  },
+  "bugs": { "url": "https://github.com/CoCreate-app/CoCreate-modal/issues" },
   "homepage": "https://cocreate.app/docs/modal",
   "funding": {
     "type": "GitHub Sponsors ❤",
@@ -60,12 +56,12 @@
     "webpack-log": "^3.0.1"
   },
   "dependencies": {
-    "@cocreate/actions": "^1.5.35",
-    "@cocreate/crud-client": "^1.16.11",
-    "@cocreate/docs": "^1.4.19",
-    "@cocreate/message-client": "^1.1.108",
-    "@cocreate/observer": "^1.5.39",
-    "@cocreate/position": "^1.1.21",
-    "@cocreate/uuid": "^1.2.38"
+    "@cocreate/actions": "^1.5.38",
+    "@cocreate/crud-client": "^1.16.16",
+    "@cocreate/docs": "^1.4.20",
+    "@cocreate/message-client": "^1.1.111",
+    "@cocreate/observer": "^1.5.42",
+    "@cocreate/position": "^1.1.24",
+    "@cocreate/uuid": "^1.2.41"
   }
 }
