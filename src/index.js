@@ -35,6 +35,14 @@ function CoCreateModal(id) {
   this._initSocket();
   
   action.init({
+    name: "openModal",
+    endEvent: "openModal",
+    callback: (btn, data) => {
+      this.open(btn);
+    },
+  });
+
+  action.init({
     name: "closeModal",
     endEvent: "closeModal",
     callback: (btn, data) => {
@@ -46,7 +54,7 @@ function CoCreateModal(id) {
     name: "minMaxModal",
     endEvent: "minMaxModal",
     callback: (btn, data) => {
-      this.modalAction(btn, 'maximize');
+      this.modalAction(btn, 'minMax');
     },
   });
 
@@ -135,6 +143,11 @@ CoCreateModal.prototype = {
       let viewPort = window.top.CoCreate.modal.viewPorts.get(openId);
       if (viewPort.pageId == data.parentId) {
         viewPort.viewPort._createModal(data);
+
+        document.dispatchEvent(new CustomEvent('openModal', {
+          detail: {}
+        }))
+
       } else {
         this.modalAction(btn, 'open', data)
       }
@@ -194,14 +207,19 @@ CoCreateModal.prototype = {
           case 'close':
             modal.viewPort._removeModal(modal)
             break;
-          case 'maximize':
+          case 'minMax':
             modal.el.position.minMax();
             break;
           case 'park':
             modal.togglePark();
             break;
           default:
-        }          
+        } 
+
+        document.dispatchEvent(new CustomEvent(`${type}Modal`, {
+          detail: {}
+        }))
+              
       }
     }
 
