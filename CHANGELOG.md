@@ -1,3 +1,17 @@
+# [1.7.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.6.0...v1.7.0) (2022-12-27)
+
+
+### Bug Fixes
+
+* bump dependecies ([af54e23](https://github.com/CoCreate-app/CoCreate-modal/commit/af54e239cda13b561546b935ca38a4599a49187f))
+* bump dependencies ([10c7ac5](https://github.com/CoCreate-app/CoCreate-modal/commit/10c7ac5f9f7465ce06a3bd6eac855734e8058f45))
+
+
+### Features
+
+* href replace with modal-src, open-modal action ([c095737](https://github.com/CoCreate-app/CoCreate-modal/commit/c09573779bc81c8ae8efcd6b39529281d9a9d183))
+* support for pass-value. will inset value in modal ([d7baedc](https://github.com/CoCreate-app/CoCreate-modal/commit/d7baedc79541ecaa943dbb344035542a4b74aa90))
+
 # [1.6.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.5.28...v1.6.0) (2022-12-25)
 
 
