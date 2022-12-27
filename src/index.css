@@ -45,7 +45,7 @@
 }
 
 /** modal title **/
-.modal-title-area{
+.modal-header{
   display: flex;
   justify-content: flex-end;
   padding-top: 5px;
@@ -53,7 +53,7 @@
   list-style-type: none;
 }
 
-.modal-title-area > li {
+.modal-header > li {
   padding-right: 10px;
   padding-left: 5px;
   font-size: 20px; 
@@ -82,8 +82,20 @@
 	transition: all 0.25s ease-in-out;
 }
 
-.modal iframe{
+.modal iframe {
+  width: 100%;
+  height: 100%;
   border:none;
+}
+
+.modal modal-container {
+  display: block;
+  height: 100vh;
+  overflow: auto
+}
+
+.modal .has-modal-header {
+  height: calc(100% - 45px)
 }
 
 .modal-drag-area {
@@ -96,6 +108,10 @@
   right: 0;
   height: 20px;
   cursor: move;
+}
+
+.modal [resize=right] {
+  right: -5px!important;
 }
 
 .modal-parked {
@@ -120,9 +136,11 @@
   
   display: none;
 }
+
 .modal-parked:hover > .parked-closeBtn{
   display: flex!important;
   align-items: center;
   justify-content: center;
   cursor: pointer;
 }
+
