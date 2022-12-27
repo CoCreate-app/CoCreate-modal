@@ -1,5 +1,6 @@
 import uuid from '@cocreate/uuid'
 import '@cocreate/position'
+import '@cocreate/element-prototype'
 
 function Modal(el, options, viewPort) {
     if (!(el && el.nodeType && el.nodeType === 1)) {
@@ -105,7 +106,10 @@ Modal.prototype = {
             }
             for (let attribute of attributes){
                 if (attribute.name.startsWith('pass-')){
-                    frame.setAttribute(`${attribute.name.substring(5)}`, attribute.value);
+                    if (attribute.name == 'pass-value')
+                        frame.setValue(attribute.value)
+                    else
+                        frame.setAttribute(`${attribute.name.substring(5)}`, attribute.value);
                 }
             }  
         }
