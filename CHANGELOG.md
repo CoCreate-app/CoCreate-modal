@@ -1,3 +1,10 @@
+## [1.7.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.7.1...v1.7.2) (2022-12-30)
+
+
+### Bug Fixes
+
+* update config sources to use template  braces with entry on src ([e5854ba](https://github.com/CoCreate-app/CoCreate-modal/commit/e5854ba7d7c9cf4db508fb490f772c72a2d06d62))
+
 ## [1.7.1](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.7.0...v1.7.1) (2022-12-29)
 
 
