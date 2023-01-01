@@ -1,3 +1,10 @@
+## [1.7.4](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.7.3...v1.7.4) (2023-01-01)
+
+
+### Bug Fixes
+
+* docs sanbox overflow ([fda88af](https://github.com/CoCreate-app/CoCreate-modal/commit/fda88aff546009dc40cb15344eafe3093078aea2))
+
 ## [1.7.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.7.2...v1.7.3) (2022-12-31)
 
 
