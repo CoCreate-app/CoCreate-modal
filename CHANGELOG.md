@@ -1,3 +1,11 @@
+## [1.7.6](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.7.5...v1.7.6) (2023-01-06)
+
+
+### Bug Fixes
+
+* bump dependencies, worklow [@v3](https://github.com/v3) ([8fe7121](https://github.com/CoCreate-app/CoCreate-modal/commit/8fe7121b005a1cc85c968a68aa95790eecb4ddc3))
+* edit in github btn styles ([da8183d](https://github.com/CoCreate-app/CoCreate-modal/commit/da8183d516452c5e230d3b438ca4ac36be16625d))
+
 ## [1.7.5](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.7.4...v1.7.5) (2023-01-05)
 
 
