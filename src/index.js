@@ -3,6 +3,7 @@ import uuid from '@cocreate/uuid'
 import action from '@cocreate/actions';
 import observer from '@cocreate/observer';
 import message from '@cocreate/message-client';
+import localStorge from '@cocreate/local-storage';
 import './index.css';
 
 function CoCreateModal(id) {
@@ -18,15 +19,15 @@ function CoCreateModal(id) {
         this.modals = new Map();
         this.rootId = this.pageId;
         this.parentId = this.pageId;
-        window.localStorage.setItem('rootId', this.pageId)
+        localStorage.setItem('rootId', this.pageId)
     } else {
-        this.pageId = window.localStorage.getItem('pageId')
+        this.pageId = localStorage.getItem('pageId')
         let viewPort = window.top.CoCreate.modal.viewPorts
         if (viewPort) 
             viewPort.set(this.pageId, this)
         
         // ToDo:  can be depreciated if we find a better way to pass rootid and parentid
-        this.parentId = window.localStorage.getItem('parentId')
+        this.parentId = localStorage.getItem('parentId')
         this.rootId = window.top.CoCreate.modal.rootId
     } 
 
@@ -140,7 +141,7 @@ CoCreateModal.prototype = {
             break;
         }
 
-        window.localStorage.setItem('parentId', openId)
+        localStorage.setItem('parentId', openId)
         
         data.type = 'open';
         data.parentId = openId;

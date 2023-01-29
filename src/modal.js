@@ -31,7 +31,7 @@ function Modal(el, options, viewPort) {
     this.el.setAttribute("id", this.id);
     this.el.setAttribute("moveable", '');
     
-    window.localStorage.setItem('pageId', this.id)
+    localStorage.setItem('pageId', this.id)
 
     this._init();
     this._setModalSize();
