@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.7.10...v1.8.0) (2023-01-29)
+
+
+### Features
+
+* import @cocreate/local-storage ([1a24bd2](https://github.com/CoCreate-app/CoCreate-modal/commit/1a24bd25467de054eb69f113571968e5d76f9fed))
+
 ## [1.7.10](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.7.9...v1.7.10) (2023-01-27)
 
 
