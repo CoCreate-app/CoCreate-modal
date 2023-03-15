@@ -169,7 +169,7 @@ Modal.prototype = {
         let bottomResize = document.createElement("div");
         bottomResize.setAttribute("resize", "bottom");
 
-        this.el.setAttribute("resizable", "");
+        // this.el.setAttribute("resizable", "");
         this.el.appendChild(dragArea);
         this.el.appendChild(topResize);
         this.el.appendChild(leftResize);
