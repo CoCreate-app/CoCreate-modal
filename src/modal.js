@@ -3,9 +3,8 @@ import '@cocreate/position'
 import '@cocreate/element-prototype'
 
 function Modal(el, options, viewPort) {
-    if (!(el && el.nodeType && el.nodeType === 1)) {
+    if (!(el && el.nodeType && el.nodeType === 1))
         return;
-    }
         
     /** options **/
     let defaults = {
@@ -25,11 +24,9 @@ function Modal(el, options, viewPort) {
     this.height = 0;
     
     this.frame = null;
-
     this.options = Object.assign(defaults, options);
     
     this.el.setAttribute("id", this.id);
-    this.el.setAttribute("moveable", '');
     
     localStorage.setItem('pageId', this.id)
 
@@ -42,16 +39,20 @@ Modal.prototype = {
     
     _init : function() {
         let opt = this.options;
-        
         let src =        opt.src   ? opt.src     : this.el.getAttribute("modal-src");
         let width =      opt.width ? opt.width   : this.el.getAttribute("modal-width");
         let height =     opt.height? opt.height  : this.el.getAttribute("modal-height");
         let color =      opt.color ? opt.color   : this.el.getAttribute("modal-color");
         let x =          opt.x     ? opt.x       : this.el.getAttribute("modal-x")
         let y =          opt.y     ? opt.y       : this.el.getAttribute("modal-y")
+        let moveable = opt.moveable? opt.moveable  : this.el.getAttribute("modal-moveable")
         let header = opt.header? opt.header  : this.el.getAttribute("modal-header")
         let iframe = opt.iframe? opt.iframe  : this.el.getAttribute("modal-iframe")
         
+        if (moveable !== 'false')
+            this.el.setAttribute("moveable", '');
+        this.viewPort.el.appendChild(this.el)
+
         let attributes = opt.attributes;
             
         if (width && width != "") {
@@ -154,7 +155,7 @@ Modal.prototype = {
     
     _createDragArea: function() {
         let dragArea = document.createElement("div");
-        dragArea.classList.add("modal-drag-area");
+        dragArea.setAttribute("drag-handle", "");
         
         let topResize = document.createElement("div");
         topResize.setAttribute("resize", "top");

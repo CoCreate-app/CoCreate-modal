@@ -98,7 +98,7 @@
   height: calc(100% - 45px)
 }
 
-.modal-drag-area {
+[drag-handle] {
   position: absolute;
   background-color: transparent;
   min-height: 10px;

@@ -33,10 +33,7 @@ ModalViewPort.prototype = {
     
     _createModal : function(attr) {
         let node = document.createElement("div");
-        node.classList.add(this.modalClass);
-        
-        this.el.appendChild(node)
-        
+        node.classList.add(this.modalClass);        
         let modal = new Modal(node, attr, this);
         this.modals.set(modal.id, modal)
         if (!this.isRoot) {
