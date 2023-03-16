@@ -60,14 +60,14 @@
     "webpack-log": "^3.0.1"
   },
   "dependencies": {
-    "@cocreate/actions": "^1.5.58",
-    "@cocreate/crud-client": "^1.18.8",
-    "@cocreate/docs": "^1.5.13",
-    "@cocreate/element-prototype": "^1.4.10",
-    "@cocreate/local-storage": "^1.4.5",
-    "@cocreate/message-client": "^1.1.133",
-    "@cocreate/observer": "^1.5.62",
-    "@cocreate/position": "^1.1.44",
-    "@cocreate/uuid": "^1.2.61"
+    "@cocreate/actions": "^1.6.0",
+    "@cocreate/crud-client": "^1.19.0",
+    "@cocreate/docs": "^1.6.0",
+    "@cocreate/element-prototype": "^1.6.0",
+    "@cocreate/local-storage": "^1.5.0",
+    "@cocreate/message-client": "^1.2.0",
+    "@cocreate/observer": "^1.6.0",
+    "@cocreate/position": "^1.2.0",
+    "@cocreate/uuid": "^1.3.0"
   }
 }
