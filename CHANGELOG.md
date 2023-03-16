@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.8.5...v1.9.0) (2023-03-16)
+
+
+### Bug Fixes
+
+* add attributes then append modal to reduce observer ([f889a56](https://github.com/CoCreate-app/CoCreate-modal/commit/f889a5638cd1b1d2c8f1ba0abe4371659ef7ac4e))
+
+
+### Features
+
+* replaced get-value and set-value with a super charged version of CoCreate-events ([d1c9cf2](https://github.com/CoCreate-app/CoCreate-modal/commit/d1c9cf236136599afa52e9a1e0c797b1ecc62872))
+
 ## [1.8.5](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.8.4...v1.8.5) (2023-02-01)
 
 
