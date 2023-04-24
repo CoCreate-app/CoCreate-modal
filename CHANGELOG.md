@@ -1,3 +1,10 @@
+## [1.10.1](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.0...v1.10.1) (2023-04-24)
+
+
+### Bug Fixes
+
+* removed uglifyjs-webpack-plugin ([de3a305](https://github.com/CoCreate-app/CoCreate-modal/commit/de3a305b1e4c014725cfdcf0adfd28e670217b06))
+
 # [1.10.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.9.6...v1.10.0) (2023-04-24)
 
 
