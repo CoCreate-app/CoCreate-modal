@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.9.6...v1.10.0) (2023-04-24)
+
+
+### Features
+
+* added pwa manifest ([47938c3](https://github.com/CoCreate-app/CoCreate-modal/commit/47938c38f6553a1e22c2d0962c25a4d0379341f8))
+
 ## [1.9.6](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.9.5...v1.9.6) (2023-04-11)
 
 
