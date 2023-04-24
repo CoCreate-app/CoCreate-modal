@@ -1,3 +1,11 @@
+## [1.10.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.2...v1.10.3) (2023-04-24)
+
+
+### Bug Fixes
+
+* updated worrkflows to v3 and node version 16 ([20ec692](https://github.com/CoCreate-app/CoCreate-modal/commit/20ec692d929ed78bbf33cc914a40554e283fdac7))
+* workflow node version updated  16 ([acae378](https://github.com/CoCreate-app/CoCreate-modal/commit/acae37811ee4f6c87105dc4cbec2c2f2eda2188a))
+
 ## [1.10.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.1...v1.10.2) (2023-04-24)
 
 
