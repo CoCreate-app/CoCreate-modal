@@ -34,7 +34,7 @@
 	border: 2px solid grey;
 	background: #fff;
 	z-index: 2;
-  overflow: auto;
+  /* overflow: auto; */
 	/* user-select: none; */
 	pointer-events: auto;
 }
