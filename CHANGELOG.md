@@ -1,3 +1,13 @@
+## [1.10.4](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.3...v1.10.4) (2023-04-30)
+
+
+### Bug Fixes
+
+* comment overflow ([ebb669b](https://github.com/CoCreate-app/CoCreate-modal/commit/ebb669b62ca894d4268d91bd7ffe2acabc26ca92))
+* fullscreen target updated to fullscreen fullscreen-target ([08f846b](https://github.com/CoCreate-app/CoCreate-modal/commit/08f846bcbeb198e600cda4aad86dc0e5f8faec87))
+* package-lock.json and pnpm-lock.yaml added to .gitignore ([d3f91bf](https://github.com/CoCreate-app/CoCreate-modal/commit/d3f91bfed8663608d686410db5ad32962d131ea8))
+* removed toogle fullscreen icons. now using css content ([d185a00](https://github.com/CoCreate-app/CoCreate-modal/commit/d185a00b3709283b8b9e7fbc8baf2defa2e00d56))
+
 ## [1.10.3](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.2...v1.10.3) (2023-04-24)
 
 
