@@ -143,10 +143,10 @@ Modal.prototype = {
             headerTemplate = header
         else
             headerTemplate = `<div class="nav bg-light-gray"><ul class="modal-header">
-                <li><a class="minimizeBtn"><i class="far fa-window-minimize"></i></a></li>
+                <li><a class="minimizeBtn"><i class="height:18px fill:#505050" src="/assets/svg/window-minimize.svg"></i></a></li>
                 <li><a class="maximizeBtn"><i class="far fa-window-restore"></i></a></li>
                 <!-- <li><a class="parkBtn"><i class="fas fa-dot-circle "></i></a></li> -->
-                <li><a class="closeBtn"><i class="fas fa-times"></i></a></li>
+                <li><a class="closeBtn"><i class="height:18px fill:#505050" src="/assets/svg/times.svg"></i></a></li>
                 </ul></div>`;
         
         this.el.innerHTML = headerTemplate + this.el.innerHTML;
