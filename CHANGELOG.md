@@ -1,3 +1,10 @@
+## [1.10.5](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.4...v1.10.5) (2023-05-01)
+
+
+### Bug Fixes
+
+* replace fontawesome with svg ([f8cad28](https://github.com/CoCreate-app/CoCreate-modal/commit/f8cad28cbe5605ba219676836d22aefafe88daea))
+
 ## [1.10.4](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.3...v1.10.4) (2023-04-30)
 
 
