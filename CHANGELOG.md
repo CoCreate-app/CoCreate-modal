@@ -1,3 +1,10 @@
+## [1.10.6](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.5...v1.10.6) (2023-05-01)
+
+
+### Bug Fixes
+
+* update manifest.json to manifest.webmanifest ([a46d516](https://github.com/CoCreate-app/CoCreate-modal/commit/a46d516a0f6b849867e791fb1ccc9b4140ccb2cc))
+
 ## [1.10.5](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.4...v1.10.5) (2023-05-01)
 
 
