@@ -166,7 +166,7 @@ CoCreateModal.prototype = {
 
     modalAction: function(btn, type, data) {
         let json = {
-            apiKey: CoCreateConfig.apiKey,
+            key: CoCreateConfig.key,
             organization_id: CoCreateConfig.organization_id,
             broadcastSender: true,
             message: 'modalAction',
