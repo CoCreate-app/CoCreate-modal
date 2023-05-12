@@ -26,7 +26,7 @@ function CoCreateModal(id) {
         if (viewPort) 
             viewPort.set(this.pageId, this)
         
-        // ToDo:  can be depreciated if we find a better way to pass rootid and parentid
+        // TODO:  can be depreciated if we find a better way to pass rootid and parentid
         this.parentId = localStorage.getItem('parentId')
         this.rootId = window.top.CoCreate.modal.rootId
     } 
