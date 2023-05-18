@@ -1,3 +1,11 @@
+## [1.10.8](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.7...v1.10.8) (2023-05-18)
+
+
+### Bug Fixes
+
+* apikey renamed to key ([94874de](https://github.com/CoCreate-app/CoCreate-modal/commit/94874dea71549c171acfcf4892fd44b8d06d7daa))
+* apikey renamed to key ([d90f0ce](https://github.com/CoCreate-app/CoCreate-modal/commit/d90f0ceb8b9e653f88173e9e1fa63895a752d1ee))
+
 ## [1.10.7](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.6...v1.10.7) (2023-05-06)
 
 
