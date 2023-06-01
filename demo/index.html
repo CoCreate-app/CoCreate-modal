@@ -1,88 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Modal | CoCreateJS</title>
-  
-    <!-- CoCreate Favicon -->
-    <link rel="icon" href="https://cdn.cocreate.app/favicon.ico" type="image/ico" sizes="16x16">
-    <!-- CoCreate CSS CDN -->
-    <link rel="stylesheet" href="https://cdn.cocreate.app/modal/latest/CoCreate-modal.min.css" type="text/css" />
-    <link rel="manifest" href="/manifest.webmanifest">
-  </head>
-  <body>
-   
-      <div class="display:flex">
-        <button>
-          <a actions="pass, openModal" modal-src="https://server.cocreate.app/CoCreate-adminUI/module_datatable.html"
-            modal-width="520px"
-            modal-height="100%"
-            modal-color="#229954"
-            modal-header="false"
-            modal-x="0px"
-            modal-y="0px"
-            data-open_in="page">
-            Page-1
-          </a>
-        </button>
+    <head>
+        <title>Modal | CoCreateJS</title>
 
-        <button>
-          <a actions="pass, openModal" modal-src="test2.html"
-            modal-width="320px"
-            modal-height="100%"
-            modal-color="#229954"
-            modal-header="true"
-            modal-x="0px"
-            modal-y="0px"
-            data-open_in="page">Page-2</a>
-        </button>
+        <!-- CoCreate Favicon -->
+        <link
+            rel="icon"
+            href="https://cdn.cocreate.app/favicon.ico"
+            type="image/ico"
+            sizes="16x16" />
+        <!-- CoCreate CSS CDN -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.cocreate.app/modal/latest/CoCreate-modal.min.css"
+            type="text/css" />
+        <link rel="manifest" href="/manifest.webmanifest" />
+    </head>
+    <body>
+        <div class="display:flex">
+            <button>
+                <a
+                    actions="pass, openModal"
+                    modal-src="https://server.cocreate.app/CoCreate-adminUI/module_datatable.html"
+                    modal-width="520px"
+                    modal-height="100%"
+                    modal-color="#229954"
+                    modal-header="false"
+                    modal-x="0px"
+                    modal-y="0px"
+                    data-open_in="page">
+                    Page-1
+                </a>
+            </button>
 
-        <button>
-          <a actions="pass, openModal" modal-src="test.html"
-            modal-width="320px"
-            modal-height="100%"
-            modal-color="#229954"
-            modal-header="true"
-            data-open_in="parent"
-            modal-x="0px"
-            modal-y="0px">Parent</a>
-        </button> 
-       
-        <button>
-          <a actions="pass, openModal" modal-src="test.html"
-            modal-width="320px" 
-            modal-height="100%"
-            modal-color="#229954"
-            modal-header="true"
-            data-open_in="root"
-            modal-x="0px"
-            modal-y="0px">Root</a>
-        </button>
-    		
-    		<button>
-    		  <a actions="pass, openModal" modal-src="test.html"
-            modal-width="320px"
-            modal-height="100%"
-            modal-color="#229954"
-            modal-header="false"
-            data-open_in="12345"
-            modal-x="0px"
-            modal-y="0px">PageID-12345</a>
-        </button>
-      </div>
+            <button>
+                <a
+                    actions="pass, openModal"
+                    modal-src="test2.html"
+                    modal-width="320px"
+                    modal-height="100%"
+                    modal-color="#229954"
+                    modal-header="true"
+                    modal-x="0px"
+                    modal-y="0px"
+                    data-open_in="page"
+                    >Page-2</a
+                >
+            </button>
 
-  		<div class>
-  		  <h2>Test 1</h2>
-  		  <h5 id="page-parent"></h5>
-  		  <h6 id="page-page"></h6>
-  		</div>
-  		 <div class=" margin-0 vh-100" id="modal-viewport"  data-ghost-class="modal-ghost"></div>
-    <!--</div>-->
+            <button>
+                <a
+                    actions="pass, openModal"
+                    modal-src="test.html"
+                    modal-width="320px"
+                    modal-height="100%"
+                    modal-color="#229954"
+                    modal-header="true"
+                    data-open_in="parent"
+                    modal-x="0px"
+                    modal-y="0px"
+                    >Parent</a
+                >
+            </button>
 
-    
+            <button>
+                <a
+                    actions="pass, openModal"
+                    modal-src="test.html"
+                    modal-width="320px"
+                    modal-height="100%"
+                    modal-color="#229954"
+                    modal-header="true"
+                    data-open_in="root"
+                    modal-x="0px"
+                    modal-y="0px"
+                    >Root</a
+                >
+            </button>
 
-    
-    <!-- CoCreate JS CDN -->
-    <script src="https://cdn.cocreate.app/modal/latest/CoCreate-modal.min.js" ></script>
-  </body>
+            <button>
+                <a
+                    actions="pass, openModal"
+                    modal-src="test.html"
+                    modal-width="320px"
+                    modal-height="100%"
+                    modal-color="#229954"
+                    modal-header="false"
+                    data-open_in="12345"
+                    modal-x="0px"
+                    modal-y="0px"
+                    >PageID-12345</a
+                >
+            </button>
+        </div>
+
+        <div class>
+            <h2>Test 1</h2>
+            <h5 id="page-parent"></h5>
+            <h6 id="page-page"></h6>
+        </div>
+        <div
+            class="margin-0 vh-100"
+            id="modal-viewport"
+            data-ghost-class="modal-ghost"></div>
+        <!--</div>-->
+
+        <!-- CoCreate JS CDN -->
+        <script src="https://cdn.cocreate.app/modal/latest/CoCreate-modal.min.js"></script>
+    </body>
 </html>
-  
