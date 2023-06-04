@@ -1,3 +1,10 @@
+## [1.10.12](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.11...v1.10.12) (2023-06-04)
+
+
+### Bug Fixes
+
+* **semantic-release:** worklow error solved by running node version 14 ([538fe5b](https://github.com/CoCreate-app/CoCreate-modal/commit/538fe5b36580e12166aeeb382b3abc9ea1507a02))
+
 ## [1.10.11](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.10...v1.10.11) (2023-06-02)
 
 
