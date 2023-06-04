@@ -1,3 +1,10 @@
+## [1.10.14](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.13...v1.10.14) (2023-06-04)
+
+
+### Bug Fixes
+
+* Refactor CoCreate.config.js to remove hard-coded credentials ([f986361](https://github.com/CoCreate-app/CoCreate-modal/commit/f9863619f0c94ad60b2a2d2f904489315d607be7))
+
 ## [1.10.13](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.12...v1.10.13) (2023-06-04)
 
 
