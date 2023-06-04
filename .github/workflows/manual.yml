@@ -1,44 +1,44 @@
 name: Manual Workflow
 on:
-  workflow_dispatch:
-    inputs:
-      invalidations:
-        description: |
-          If set to 'true', invalidates previous upload.
-        default: "true"
-        required: true
+    workflow_dispatch:
+        inputs:
+            invalidations:
+                description: |
+                    If set to 'true', invalidates previous upload.
+                default: "true"
+                required: true
 
 jobs:
-  cdn:
-    runs-on: ubuntu-latest
-    env:
-      DRY_RUN: ${{ github.event.inputs.dry_run }}
-      GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
-      NPM_TOKEN: "${{ secrets.NPM_TOKEN }}"
+    cdn:
+        runs-on: ubuntu-latest
+        env:
+            DRY_RUN: ${{ github.event.inputs.dry_run }}
+            GITHUB_TOKEN: "${{ secrets.GITHUB }}"
+            NPM_TOKEN: "${{ secrets.NPM_TOKEN }}"
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-      - name: setup nodejs
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-      - name: yarn install
-        run: >
-          echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >
-          .npmrc
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+            - name: setup nodejs
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+            - name: yarn install
+              run: >
+                  echo "//registry.npmjs.org/:_authToken=${{ secrets.NPM_TOKEN }}" >
+                  .npmrc
 
-          yarn install
-      - name: yarn build
-        run: yarn build
-      - name: upload latest bundle
-        uses: CoCreate-app/CoCreate-s3@master
-        with:
-          aws-key-id: "${{ secrets.AWSACCESSKEYID }}"
-          aws-access-key: "${{ secrets.AWSSECERTACCESSKEY }}"
-          distributionId: "${{ secrets.DISTRIBUTION_ID }}"
-          bucket: testcrudbucket
-          source: ./dist
-          destination: /modal/latest
-          acl: public-read
-          invalidations: ${{ github.event.inputs.invalidations }}
+                  yarn install
+            - name: yarn build
+              run: yarn build
+            - name: upload latest bundle
+              uses: CoCreate-app/CoCreate-s3@master
+              with:
+                  aws-key-id: "${{ secrets.AWSACCESSKEYID }}"
+                  aws-access-key: "${{ secrets.AWSSECERTACCESSKEY }}"
+                  distributionId: "${{ secrets.DISTRIBUTION_ID }}"
+                  bucket: testcrudbucket
+                  source: ./dist
+                  destination: /modal/latest
+                  acl: public-read
+                  invalidations: ${{ github.event.inputs.invalidations }}
