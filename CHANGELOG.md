@@ -1,3 +1,11 @@
+## [1.10.13](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.12...v1.10.13) (2023-06-04)
+
+
+### Bug Fixes
+
+* replaced secert GITHUB_TOKEN with GITHUB ([02eb73c](https://github.com/CoCreate-app/CoCreate-modal/commit/02eb73c0405c061d96c96a858721ba411629ecd1))
+* Update dependencies versions for [@cocreate](https://github.com/cocreate) libraries ([50ef97d](https://github.com/CoCreate-app/CoCreate-modal/commit/50ef97d5e576e336ec1ad56a5b21f8d7228d3576))
+
 ## [1.10.12](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.11...v1.10.12) (2023-06-04)
 
 
