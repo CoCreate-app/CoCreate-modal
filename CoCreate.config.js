@@ -10,7 +10,7 @@ module.exports = {
                 "name": "index.html",
                 "path": "/docs/modal/index.html",
                 "src": "{{./docs/index.html}}",
-                "hosts": [
+                "host": [
                     "*",
                     "general.cocreate.app"
                 ],
