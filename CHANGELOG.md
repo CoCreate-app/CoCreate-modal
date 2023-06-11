@@ -1,3 +1,10 @@
+## [1.10.20](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.19...v1.10.20) (2023-06-11)
+
+
+### Bug Fixes
+
+* postintall error ([72db72a](https://github.com/CoCreate-app/CoCreate-modal/commit/72db72aa5523f7e94abad462ff7be89259d5350e))
+
 ## [1.10.19](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.18...v1.10.19) (2023-06-11)
 
 
