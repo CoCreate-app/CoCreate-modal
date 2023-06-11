@@ -1,3 +1,10 @@
+## [1.10.19](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.18...v1.10.19) (2023-06-11)
+
+
+### Bug Fixes
+
+* @cocreate/cli moved to dependencies ([bfdf5e3](https://github.com/CoCreate-app/CoCreate-modal/commit/bfdf5e3df9a475f69313533350b68cf056308e89))
+
 ## [1.10.18](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.17...v1.10.18) (2023-06-11)
 
 
