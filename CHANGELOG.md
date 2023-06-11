@@ -1,3 +1,10 @@
+## [1.10.27](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.26...v1.10.27) (2023-06-11)
+
+
+### Bug Fixes
+
+* Update dependencies versions for [@cocreate](https://github.com/cocreate) libraries ([94240df](https://github.com/CoCreate-app/CoCreate-modal/commit/94240df982993c2fa1c21b9aacd5349553c6d508))
+
 ## [1.10.26](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.25...v1.10.26) (2023-06-11)
 
 
