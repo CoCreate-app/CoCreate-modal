@@ -1,3 +1,10 @@
+## [1.10.24](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.23...v1.10.24) (2023-06-11)
+
+
+### Bug Fixes
+
+* testing workflow ([3681dd5](https://github.com/CoCreate-app/CoCreate-modal/commit/3681dd579fd567096326a85ea89efd4a42d6b331))
+
 ## [1.10.23](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.22...v1.10.23) (2023-06-11)
 
 
