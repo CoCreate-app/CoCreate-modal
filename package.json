@@ -59,7 +59,6 @@
   },
   "dependencies": {
     "@cocreate/actions": "^1.8.31",
-    "@cocreate/cli": "^1.34.0",
     "@cocreate/crud-client": "^1.21.23",
     "@cocreate/element-prototype": "^1.8.29",
     "@cocreate/local-storage": "^1.7.20",
