@@ -1,3 +1,18 @@
+# [1.11.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.28...v1.11.0) (2023-08-16)
+
+
+### Bug Fixes
+
+* crud attributes renamed ([682920e](https://github.com/CoCreate-app/CoCreate-modal/commit/682920e71eae1935f46b56ba81b88beb9f331e13))
+* replace -target -selector ([948313e](https://github.com/CoCreate-app/CoCreate-modal/commit/948313efefa3788ac02c41aeceb89fc10c9205ea))
+* updated actions callback data object ([171a544](https://github.com/CoCreate-app/CoCreate-modal/commit/171a5440bd912a30790fcf5dcd718d74317828f2))
+* webpack.config and package.json make use of mode=production instead of process.env ([c90d56f](https://github.com/CoCreate-app/CoCreate-modal/commit/c90d56fd5412ac152fbac3958df54bab02ce8159))
+
+
+### Features
+
+* name attribute and variable renamed to key ([32880a0](https://github.com/CoCreate-app/CoCreate-modal/commit/32880a049d4624f9c9c09b45c00aed6af3240926))
+
 ## [1.10.28](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.10.27...v1.10.28) (2023-06-14)
 
 
