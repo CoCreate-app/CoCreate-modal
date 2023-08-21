@@ -1,3 +1,12 @@
+## [1.12.1](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.12.0...v1.12.1) (2023-08-21)
+
+
+### Bug Fixes
+
+* /dist/CoCreate.js updated to https://CoCreate.app/dist/CoCreate.js ([5ffb785](https://github.com/CoCreate-app/CoCreate-modal/commit/5ffb78552015edf9de4c5e0fe0c87d607f71ba7c))
+* replace cdn with /dist ([bdf0711](https://github.com/CoCreate-app/CoCreate-modal/commit/bdf0711e06f53729db785e117fc8dd900259875c))
+* update file uploader ([ff0117c](https://github.com/CoCreate-app/CoCreate-modal/commit/ff0117ce5ef5205ac5ea96de645a215aecd34c21))
+
 # [1.12.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.11.0...v1.12.0) (2023-08-17)
 
 
