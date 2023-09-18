@@ -1,3 +1,11 @@
+## [1.13.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.13.1...v1.13.2) (2023-09-18)
+
+
+### Bug Fixes
+
+*  Add path and pathname ([0fc81d1](https://github.com/CoCreate-app/CoCreate-modal/commit/0fc81d1d9bb4a88b821e3952ef072e73c2549215))
+* Update CoCreate depndencies to latest versions ([868d4ca](https://github.com/CoCreate-app/CoCreate-modal/commit/868d4caf724337f7e6e15c4ba0c6cfe714014341))
+
 ## [1.13.1](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.13.0...v1.13.1) (2023-08-21)
 
 
