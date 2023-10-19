@@ -2,7 +2,7 @@ import ModalViewPort from "./viewport.js"
 import uuid from '@cocreate/uuid'
 import action from '@cocreate/actions';
 import observer from '@cocreate/observer';
-import message from '@cocreate/message-client';
+import socket from '@cocreate/socket-client';
 import localStorge from '@cocreate/local-storage';
 import './index.css';
 
@@ -93,7 +93,7 @@ CoCreateModal.prototype = {
 
     _initSocket: function () {
         const self = this;
-        message.listen('modalAction', function (response) {
+        socket.listen('modalAction', function (response) {
             self.runModalAction(response.data)
         })
     },
@@ -169,12 +169,12 @@ CoCreateModal.prototype = {
             key: CoCreateConfig.key,
             organization_id: CoCreateConfig.organization_id,
             broadcastSender: true,
-            message: 'modalAction',
+            method: 'modalAction',
         }
 
         if (type == 'open') {
             json.data = data
-            message.send(json);
+            socket.send(json);
         } else {
             let modalEl = btn.closest('.modal')
 
@@ -194,7 +194,7 @@ CoCreateModal.prototype = {
             if (modal)
                 this.runModalAction(json.data)
             else
-                message.send(json);
+                socket.send(json);
         }
     },
 
