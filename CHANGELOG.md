@@ -1,3 +1,10 @@
+## [1.14.5](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.14.4...v1.14.5) (2023-10-19)
+
+
+### Bug Fixes
+
+* removed @cocreate/message-client ([1855c15](https://github.com/CoCreate-app/CoCreate-modal/commit/1855c15fb0db00ce3558d7b333c043138bfeb197))
+
 ## [1.14.4](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.14.3...v1.14.4) (2023-10-14)
 
 
