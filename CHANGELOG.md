@@ -1,3 +1,11 @@
+## [1.14.7](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.14.6...v1.14.7) (2023-11-03)
+
+
+### Bug Fixes
+
+* favicon.ico path ([475357d](https://github.com/CoCreate-app/CoCreate-modal/commit/475357d495fd83761815b0c92d0fc6eeb8d553d9))
+* update dependencies to the lates versions ([c05d218](https://github.com/CoCreate-app/CoCreate-modal/commit/c05d21808869a2a816030720d17b662c1f29446c))
+
 ## [1.14.6](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.14.5...v1.14.6) (2023-10-25)
 
 
