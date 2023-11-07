@@ -12,8 +12,7 @@ module.exports = {
                 "pathname": "/docs/modal/index.html",
                 "src": "{{./docs/index.html}}",
                 "host": [
-                    "*",
-                    "general.cocreate.app"
+                    "*"
                 ],
                 "directory": "modal",
                 "content-type": "{{content-type}}",
