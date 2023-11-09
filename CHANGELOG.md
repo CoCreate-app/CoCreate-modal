@@ -1,3 +1,11 @@
+## [1.14.8](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.14.7...v1.14.8) (2023-11-09)
+
+
+### Bug Fixes
+
+* meta name typo ([7b25458](https://github.com/CoCreate-app/CoCreate-modal/commit/7b25458d2d0c1f9026ac57c047ae78ecc74cf4da))
+* update host ([ca22ad0](https://github.com/CoCreate-app/CoCreate-modal/commit/ca22ad00803cca3fbfa369d8eee36b1fc5097ba3))
+
 ## [1.14.7](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.14.6...v1.14.7) (2023-11-03)
 
 
