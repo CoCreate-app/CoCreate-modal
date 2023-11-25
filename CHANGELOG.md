@@ -1,3 +1,16 @@
+# [1.16.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.15.0...v1.16.0) (2023-11-25)
+
+
+### Bug Fixes
+
+* pass attributes renamed to state ([1d4ca30](https://github.com/CoCreate-app/CoCreate-modal/commit/1d4ca30142b78eb98cd9208f3a7abc1b79ae1ca9))
+* update nav, edit button and css path ([23f9a0f](https://github.com/CoCreate-app/CoCreate-modal/commit/23f9a0f96cfa858bdaa028f6d86371629b13be6d))
+
+
+### Features
+
+* upgrade dependencies for latest features and fixes ([465d238](https://github.com/CoCreate-app/CoCreate-modal/commit/465d238490d3b1ae22403edba417627b11515cda))
+
 # [1.15.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.14.9...v1.15.0) (2023-11-19)
 
 
