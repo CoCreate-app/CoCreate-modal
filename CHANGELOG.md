@@ -1,3 +1,11 @@
+## [1.17.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.17.1...v1.17.2) (2024-06-12)
+
+
+### Bug Fixes
+
+* bump cocreate dependencies ([bb85fe4](https://github.com/CoCreate-app/CoCreate-modal/commit/bb85fe4bdd55146c67d63323979bc47d8d315ef2))
+* svg icon class ([c24b93e](https://github.com/CoCreate-app/CoCreate-modal/commit/c24b93eed30de5a613d16e68afbc3558caa206d7))
+
 ## [1.17.1](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.17.0...v1.17.1) (2024-04-29)
 
 
