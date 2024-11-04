@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/modal",
-  "version": "1.17.2",
+  "version": "1.18.0",
   "description": "A draggable, movable and resizable modal. customizable via attributes, great for popups, alerts, multitasking and displaying multiple views.",
   "keywords": [
     "modal",

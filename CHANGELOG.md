@@ -1,3 +1,17 @@
+# [1.18.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.17.2...v1.18.0) (2024-11-04)
+
+
+### Bug Fixes
+
+* pretier.config.js and file formating ([9e4bd4b](https://github.com/CoCreate-app/CoCreate-modal/commit/9e4bd4b8d40aa7048fbbe7223cb46089c227b3da))
+* support prefers-color-scheme ([156f727](https://github.com/CoCreate-app/CoCreate-modal/commit/156f727de26e1f6c9d891271b6bc5998d242dc37))
+
+
+### Features
+
+* add prettier.config.js and format files ([f1719a3](https://github.com/CoCreate-app/CoCreate-modal/commit/f1719a35d39d150512dd53de56e14191f28951e0))
+* add prettier.config.js and format files ([d0d0a76](https://github.com/CoCreate-app/CoCreate-modal/commit/d0d0a76ecc4fd9ee06b53267a6d4748ffc887ced))
+
 ## [1.17.2](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.17.1...v1.17.2) (2024-06-12)
 
 
