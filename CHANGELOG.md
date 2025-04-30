@@ -1,3 +1,13 @@
+## [1.18.1](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.18.0...v1.18.1) (2025-04-30)
+
+
+### Bug Fixes
+
+* added css-loader ([b5afc3d](https://github.com/CoCreate-app/CoCreate-modal/commit/b5afc3d0046114e7f9beb0ef0c294ea97efc076f))
+* update query attributes ([e6e8d8e](https://github.com/CoCreate-app/CoCreate-modal/commit/e6e8d8e53529c7a4c032496f2bbd165deb028453))
+* updated cocreate modules versions ([3802e2a](https://github.com/CoCreate-app/CoCreate-modal/commit/3802e2ac53f79ad52bcbaefea30914b8489a26d2))
+* webpack.config and devdependencies ([6e592ff](https://github.com/CoCreate-app/CoCreate-modal/commit/6e592ffdacc30f53096a82f6ef4c50e5a57350e9))
+
 # [1.18.0](https://github.com/CoCreate-app/CoCreate-modal/compare/v1.17.2...v1.18.0) (2024-11-04)
 
 
